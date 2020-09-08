@@ -11,6 +11,7 @@ services:
     stdin_open: true
     working_dir: /usr/app
     # command: /bin/sh -c "yarn global add firebase-tools && yarn install && yarn start"
+    command: /bin/sh -c "yarn install && yarn start"
     ports:
       - "3000:3000"
     # - "9005:9005"
