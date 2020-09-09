@@ -1,13 +1,22 @@
 ## 2-crossword
 
 ### 環境
-- Node.js：14.3.0
+- Node.js：12.18.3
 - React：16.13.1
 
 ### 開発環境構築
-- コンテナ起動（初回はライブラリのインストールがあるので少し時間かかる）
+- ライブラリのインストール
 ```
-$ docker-compose up -d
+$ npm install
+or
+$ yarn install
+```
+
+- サーバの起動
+```
+$ npm start
+or
+$ yarn start
 ```
 
 - ブラウザにアクセス
