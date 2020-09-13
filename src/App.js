@@ -10,6 +10,7 @@ import red from '@material-ui/core/colors/red';
 import green from '@material-ui/core/colors/green';
 import indigo from '@material-ui/core/colors/indigo';
 import SelectDifficultyModal from './organisms/SelectDifficultyModal';
+import CompleteModal from './organisms/CompleteModal';
 import './App.css';
 
 const App = () => {
@@ -21,6 +22,8 @@ const App = () => {
 
   const answerButtonColor = [orange[800], red[500], green[600], indigo[500]];
 
+  const [countDowntime, updateCountDownTime] = useState(30);
+  const [timerId, setTimerId] = useState(0);
   const [partsCount, setPartsCount] = useState(1);
   const [buttonFormulaData, setButtonFormulaData] = useState([]);
   const [correctAnswerIndex, setCorrectAnswerIndex] = useState(null);
@@ -29,6 +32,18 @@ const App = () => {
   const [difficultyModalOpen, updateDifficultyModalOpen] = useState(true);
   const [displayAnswer, updateDisplayAnswer] = useState(false);
   const [lastAnswerCorrect, updateLastAnswerCorrect] = useState(false);
+  const [completeModalOpen, updateCompleteModalOpen] = useState(false);
+
+  const startTimer = () => {
+    setTimerId(
+      setInterval(() => {
+        updateCountDownTime((time) => time - 1);
+      }, 1000)
+    );
+  };
+  const stopTimer = () => {
+    clearInterval(timerId);
+  };
 
   const getRandomInt = (count, initNum = 0) => {
     return Math.floor(Math.random() * Math.floor(count) + initNum);
@@ -150,9 +165,17 @@ const App = () => {
     initialFormulaData();
   }, [partsCount, answerCount]);
 
+  useEffect(() => {
+    if (countDowntime === 0) {
+      stopTimer();
+      updateCompleteModalOpen(true);
+    }
+  }, [countDowntime]);
+
   const handleSelectDifficultyAction = (diffculty) => {
     initialPartsCount(diffculty);
     updateDifficultyModalOpen(false);
+    startTimer();
   };
 
   const handleAnswerAction = (index) => {
@@ -162,6 +185,13 @@ const App = () => {
       updateDisplayAnswer(false);
       updateAnswerCount((count) => count + 1);
     }, 1200);
+  };
+
+  const handleRestartAction = () => {
+    updateCompleteModalOpen(false);
+    updateCountDownTime(60);
+    updateCorrectAnswerCount(0);
+    updateDifficultyModalOpen(true);
   };
 
   return (
@@ -179,7 +209,7 @@ const App = () => {
           <Box display="flex">
             <Box m={2} fontSize="1.8rem">
               <TimerIcon style={{ paddingRight: '5px' }} />
-              <>10:00</>
+              <>{countDowntime}</>
             </Box>
             <Box m={2} fontSize="1.8rem">
               <PanoramaFishEyeIcon />
@@ -223,6 +253,11 @@ const App = () => {
       <SelectDifficultyModal
         open={difficultyModalOpen}
         handleSelectDifficultyAction={handleSelectDifficultyAction}
+      />
+      <CompleteModal
+        open={completeModalOpen}
+        correctAnswerCount={correctAnswerCount}
+        handleRestartAction={handleRestartAction}
       />
     </>
   );
