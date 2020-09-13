@@ -28,7 +28,7 @@ const SelectDifficultyModal = ({ open, handleSelectDifficultyAction }) => {
         >
           <h2 id="transition-modal-title">難易度選択</h2>
           <p id="transition-modal-description">
-            難易度に応じて、式が長くなります。
+            難易度に応じて、式が長くなります
           </p>
           <>
             <Box p={2}>
