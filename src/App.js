@@ -19,7 +19,6 @@ const App = () => {
   const DIFFCULTY_NORMAL = 'NORMAL';
   const DIFFCULTY_HARD = 'HARD';
 
-  const buttonCount = 4;
   const answerButtonColor = [orange[800], red[500], green[600], indigo[500]];
 
   const [partsCount, setPartsCount] = useState(1);
@@ -28,6 +27,8 @@ const App = () => {
   const [answerCount, updateAnswerCount] = useState(0);
   const [correctAnswerCount, updateCorrectAnswerCount] = useState(0);
   const [difficultyModalOpen, updateDifficultyModalOpen] = useState(true);
+  const [displayAnswer, updateDisplayAnswer] = useState(false);
+  const [lastAnswerCorrect, updateLastAnswerCorrect] = useState(false);
 
   const getRandomInt = (count, initNum = 0) => {
     return Math.floor(Math.random() * Math.floor(count) + initNum);
@@ -65,21 +66,32 @@ const App = () => {
         console.log('error');
       }
     }
+    const abs = Math.abs(num - 2);
 
     const formulaData = {
       num,
       formula,
+      abs,
     };
     return formulaData;
   };
 
+  // 正答が複数存在しうるかチェック
+  const isDuplicationAbs = (formulaDataList) => {
+    const absList = formulaDataList.map((data) => {
+      return data.abs;
+    });
+    return (
+      Array.from(new Set(absList)).length < process.env.REACT_APP_BUTTON_COUNT
+    );
+  };
+
   const initialCorrectAnswerIndex = (formulaDataList) => {
-    const absList = [];
-    formulaDataList.forEach((data, index) => {
-      absList.push({
+    const absList = formulaDataList.map((data, index) => {
+      return {
         originalIndex: index,
-        abs: Math.abs(data.num - 2),
-      });
+        abs: data.abs,
+      };
     });
     absList.sort((a, b) => {
       if (a.abs < b.abs) {
@@ -92,11 +104,19 @@ const App = () => {
 
   const initialFormulaData = () => {
     const addPartsCount = partsCount - 1;
+    let formulaDataList;
 
-    const formulaDataList = [];
-    for (let count = 1; count <= buttonCount; count += 1) {
-      formulaDataList.push(getFormulaData(addPartsCount));
-    }
+    // 正答が複数存在するパターンの場合は、再度初期化しなおし。
+    do {
+      formulaDataList = [];
+      for (
+        let count = 1;
+        count <= process.env.REACT_APP_BUTTON_COUNT;
+        count += 1
+      ) {
+        formulaDataList.push(getFormulaData(addPartsCount));
+      }
+    } while (isDuplicationAbs(formulaDataList));
     initialCorrectAnswerIndex(formulaDataList);
     setButtonFormulaData(formulaDataList);
   };
@@ -120,6 +140,9 @@ const App = () => {
   const checkAnswer = (index) => {
     if (index === correctAnswerIndex) {
       updateCorrectAnswerCount((count) => count + 1);
+      updateLastAnswerCorrect(true);
+    } else {
+      updateLastAnswerCorrect(false);
     }
   };
 
@@ -134,7 +157,11 @@ const App = () => {
 
   const handleAnswerAction = (index) => {
     checkAnswer(index);
-    updateAnswerCount((count) => count + 1);
+    updateDisplayAnswer(true);
+    setTimeout(() => {
+      updateDisplayAnswer(false);
+      updateAnswerCount((count) => count + 1);
+    }, 1200);
   };
 
   return (
@@ -159,7 +186,11 @@ const App = () => {
               <>{`：${correctAnswerCount}`}</>
             </Box>
           </Box>
-          <Typography>一番「2」に近いのはどれかな？</Typography>
+          <Typography>
+            {displayAnswer && lastAnswerCorrect && '正解！'}
+            {displayAnswer && !lastAnswerCorrect && '不正解...'}
+            {!displayAnswer && '一番「2」に近いのはどれかな？'}
+          </Typography>
           {buttonFormulaData.map((data, index) => {
             return (
               <Box p={2}>
@@ -175,7 +206,15 @@ const App = () => {
                 >
                   {data.formula}
                 </Button>
-                <Typography align="center">test</Typography>
+                <Box height={20}>
+                  {displayAnswer && (
+                    <Typography align="center">
+                      {`${data.num} → 2まで${data.abs} ${
+                        index === correctAnswerIndex ? '〇' : '×'
+                      }`}
+                    </Typography>
+                  )}
+                </Box>
               </Box>
             );
           })}
