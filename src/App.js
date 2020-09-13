@@ -11,7 +11,6 @@ import green from '@material-ui/core/colors/green';
 import indigo from '@material-ui/core/colors/indigo';
 import SelectDifficultyModal from './organisms/SelectDifficultyModal';
 import CompleteModal from './organisms/CompleteModal';
-import './App.css';
 
 const App = () => {
   const PLUS_OPERATOR = 'PLUS';
