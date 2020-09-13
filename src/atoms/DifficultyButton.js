@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from '@material-ui/core';
+import green from '@material-ui/core/colors/green';
 
 const DifficultyButton = ({ difficulty, onClickAction }) => {
   return (
@@ -8,7 +9,7 @@ const DifficultyButton = ({ difficulty, onClickAction }) => {
       {difficulty === 'EASY' && (
         <Button
           variant="contained"
-          style={{ color: 'white', backgroundColor: 'green' }}
+          style={{ color: 'white', backgroundColor: green[600] }}
           onClick={() => onClickAction(difficulty)}
         >
           初級（数値2つ）
