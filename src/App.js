@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import TimerIcon from '@material-ui/icons/Timer';
+import PanoramaFishEyeIcon from '@material-ui/icons/PanoramaFishEye';
 import orange from '@material-ui/core/colors/orange';
 import red from '@material-ui/core/colors/red';
 import green from '@material-ui/core/colors/green';
@@ -136,25 +140,46 @@ const App = () => {
   return (
     <>
       <Container maxWidth="sm">
-        {buttonFormulaData.map((data, index) => {
-          return (
-            <Button
-              key={data.formula}
-              variant="contained"
-              style={{
-                color: 'white',
-                backgroundColor: answerButtonColor[index],
-              }}
-              onClick={() => handleAnswerAction(index)}
-            >
-              {data.formula}
-            </Button>
-          );
-        })}
-        <p>
-          正解数：
-          {correctAnswerCount}
-        </p>
+        <Box
+          p={4}
+          my={1}
+          boxShadow={3}
+          borderRadius={16}
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+        >
+          <Box display="flex">
+            <Box m={2} fontSize="1.8rem">
+              <TimerIcon style={{ paddingRight: '5px' }} />
+              <>10:00</>
+            </Box>
+            <Box m={2} fontSize="1.8rem">
+              <PanoramaFishEyeIcon />
+              <>{`：${correctAnswerCount}`}</>
+            </Box>
+          </Box>
+          <Typography>一番「2」に近いのはどれかな？</Typography>
+          {buttonFormulaData.map((data, index) => {
+            return (
+              <Box p={2}>
+                <Button
+                  key={data.formula}
+                  variant="contained"
+                  style={{
+                    width: '250px',
+                    color: 'white',
+                    backgroundColor: answerButtonColor[index],
+                  }}
+                  onClick={() => handleAnswerAction(index)}
+                >
+                  {data.formula}
+                </Button>
+                <Typography align="center">test</Typography>
+              </Box>
+            );
+          })}
+        </Box>
       </Container>
       <SelectDifficultyModal
         open={difficultyModalOpen}
