@@ -1,4 +1,4 @@
-## close-to-2
+## 2-crossword
 
 ### 環境
 - Node.js：12.18.3
