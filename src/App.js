@@ -60,7 +60,6 @@ const App = () => {
       operator,
       num,
     };
-    console.log(parts);
     return parts;
   };
 
@@ -162,6 +161,8 @@ const App = () => {
 
   useEffect(() => {
     initialFormulaData();
+    // TODO: react-hooks/exhaustive-depsルールを一時的に無効化
+    // eslint-disable-next-line
   }, [partsCount, answerCount]);
 
   useEffect(() => {
@@ -169,6 +170,8 @@ const App = () => {
       stopTimer();
       updateCompleteModalOpen(true);
     }
+    // TODO: react-hooks/exhaustive-depsルールを一時的に無効化
+    // eslint-disable-next-line
   }, [countDowntime]);
 
   const handleSelectDifficultyAction = (diffculty) => {
@@ -222,9 +225,8 @@ const App = () => {
           </Typography>
           {buttonFormulaData.map((data, index) => {
             return (
-              <Box p={2}>
+              <Box p={2} key={data.formula}>
                 <Button
-                  key={data.formula}
                   variant="contained"
                   style={{
                     width: '250px',
