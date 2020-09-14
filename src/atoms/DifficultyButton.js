@@ -6,22 +6,24 @@ import green from '@material-ui/core/colors/green';
 const DifficultyButton = ({ difficulty, onClickAction }) => {
   return (
     <>
-      {difficulty === 'EASY' && (
+      {difficulty === '初級' && (
         <Button
           variant="contained"
           style={{ color: 'white', backgroundColor: green[600] }}
           onClick={() => onClickAction(difficulty)}
         >
-          初級（数値2つ）
+          {`初級（数値${process.env.REACT_APP_EASY_FORMULA_PARTS_COUNT}つ）`}
         </Button>
       )}
-      {(difficulty === 'NORMAL' || difficulty === 'HARD') && (
+      {(difficulty === '中級' || difficulty === '上級') && (
         <Button
           variant="contained"
-          color={difficulty === 'NORMAL' ? 'primary' : 'secondary'}
+          color={difficulty === '中級' ? 'primary' : 'secondary'}
           onClick={() => onClickAction(difficulty)}
         >
-          {difficulty === 'NORMAL' ? '中級（数値3つ）' : '上級（数値5つ）'}
+          {difficulty === '中級'
+            ? `中級（数値${process.env.REACT_APP_NORMAL_FORMULA_PARTS_COUNT}つ）`
+            : `上級（数値${process.env.REACT_APP_HARD_FORMULA_PARTS_COUNT}つ）`}
         </Button>
       )}
     </>

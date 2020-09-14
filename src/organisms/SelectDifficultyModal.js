@@ -33,19 +33,19 @@ const SelectDifficultyModal = ({ open, handleSelectDifficultyAction }) => {
           <>
             <Box p={2}>
               <DifficultyButton
-                difficulty="EASY"
+                difficulty="初級"
                 onClickAction={handleSelectDifficultyAction}
               />
             </Box>
             <Box p={2}>
               <DifficultyButton
-                difficulty="NORMAL"
+                difficulty="中級"
                 onClickAction={handleSelectDifficultyAction}
               />
             </Box>
             <Box p={2}>
               <DifficultyButton
-                difficulty="HARD"
+                difficulty="上級"
                 onClickAction={handleSelectDifficultyAction}
               />
             </Box>
