@@ -15,14 +15,15 @@ import CompleteModal from './organisms/CompleteModal';
 const App = () => {
   const PLUS_OPERATOR = 'PLUS';
   const MINUS_OPERATOR = 'MINUS';
-  const DIFFCULTY_EASY = 'EASY';
-  const DIFFCULTY_NORMAL = 'NORMAL';
-  const DIFFCULTY_HARD = 'HARD';
+  const DIFFCULTY_EASY = '初級';
+  const DIFFCULTY_NORMAL = '中級';
+  const DIFFCULTY_HARD = '上級';
 
   const answerButtonColor = [orange[800], red[500], green[600], indigo[500]];
 
   const [countDowntime, updateCountDownTime] = useState(30);
   const [timerId, setTimerId] = useState(0);
+  const [diffculty, setDiffculty] = useState(DIFFCULTY_EASY);
   const [partsCount, setPartsCount] = useState(1);
   const [buttonFormulaData, setButtonFormulaData] = useState([]);
   const [correctAnswerIndex, setCorrectAnswerIndex] = useState(null);
@@ -134,8 +135,9 @@ const App = () => {
     setButtonFormulaData(formulaDataList);
   };
 
-  const initialPartsCount = (diffculty) => {
-    switch (diffculty) {
+  const initialDiffcultySetting = (selectDiffculty) => {
+    setDiffculty(selectDiffculty);
+    switch (selectDiffculty) {
       case DIFFCULTY_EASY:
         setPartsCount(process.env.REACT_APP_EASY_FORMULA_PARTS_COUNT);
         break;
@@ -174,8 +176,8 @@ const App = () => {
     // eslint-disable-next-line
   }, [countDowntime]);
 
-  const handleSelectDifficultyAction = (diffculty) => {
-    initialPartsCount(diffculty);
+  const handleSelectDifficultyAction = (selectDiffculty) => {
+    initialDiffcultySetting(selectDiffculty);
     updateDifficultyModalOpen(false);
     startTimer();
   };
@@ -191,7 +193,7 @@ const App = () => {
 
   const handleRestartAction = () => {
     updateCompleteModalOpen(false);
-    updateCountDownTime(60);
+    updateCountDownTime(30);
     updateCorrectAnswerCount(0);
     updateDifficultyModalOpen(true);
   };
@@ -257,6 +259,7 @@ const App = () => {
       />
       <CompleteModal
         open={completeModalOpen}
+        diffculty={diffculty}
         correctAnswerCount={correctAnswerCount}
         handleRestartAction={handleRestartAction}
       />
