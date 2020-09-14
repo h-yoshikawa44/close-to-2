@@ -223,7 +223,7 @@ const App = () => {
           <Typography>
             {displayAnswer && lastAnswerCorrect && '正解！'}
             {displayAnswer && !lastAnswerCorrect && '不正解...'}
-            {!displayAnswer && '一番「2」に近いのはどれかな？'}
+            {!displayAnswer && '一番「2」に近い式はどれかな？'}
           </Typography>
           {buttonFormulaData.map((data, index) => {
             return (
