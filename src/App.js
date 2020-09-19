@@ -2,14 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import TimerIcon from '@material-ui/icons/Timer';
 import PanoramaFishEyeIcon from '@material-ui/icons/PanoramaFishEye';
-import orange from '@material-ui/core/colors/orange';
-import red from '@material-ui/core/colors/red';
-import green from '@material-ui/core/colors/green';
-import indigo from '@material-ui/core/colors/indigo';
 import SelectDifficultyModal from './organisms/SelectDifficultyModal';
+import GuideMessage from './atoms/GuideMessage';
+import AnswerButton from './atoms/AnswerButton';
+import AnswerGuide from './atoms/AnswerGuide';
 import CompleteModal from './organisms/CompleteModal';
 
 const App = () => {
@@ -18,8 +16,6 @@ const App = () => {
   const DIFFCULTY_EASY = '初級';
   const DIFFCULTY_NORMAL = '中級';
   const DIFFCULTY_HARD = '上級';
-
-  const answerButtonColor = [orange[800], red[500], green[600], indigo[500]];
 
   const [countDowntime, updateCountDownTime] = useState(30);
   const [timerId, setTimerId] = useState(0);
@@ -30,7 +26,7 @@ const App = () => {
   const [answerCount, updateAnswerCount] = useState(0);
   const [correctAnswerCount, updateCorrectAnswerCount] = useState(0);
   const [difficultyModalOpen, updateDifficultyModalOpen] = useState(true);
-  const [displayAnswer, updateDisplayAnswer] = useState(false);
+  const [AnswerDisplay, updateAnswerDisplay] = useState(false);
   const [lastAnswerCorrect, updateLastAnswerCorrect] = useState(false);
   const [completeModalOpen, updateCompleteModalOpen] = useState(false);
 
@@ -184,9 +180,9 @@ const App = () => {
 
   const handleAnswerAction = (index) => {
     checkAnswer(index);
-    updateDisplayAnswer(true);
+    updateAnswerDisplay(true);
     setTimeout(() => {
-      updateDisplayAnswer(false);
+      updateAnswerDisplay(false);
       updateAnswerCount((count) => count + 1);
     }, 1200);
   };
@@ -220,32 +216,26 @@ const App = () => {
               <>{`：${correctAnswerCount}`}</>
             </Box>
           </Box>
-          <Typography>
-            {displayAnswer && lastAnswerCorrect && '正解！'}
-            {displayAnswer && !lastAnswerCorrect && '不正解...'}
-            {!displayAnswer && '一番「2」に近い式はどれかな？'}
-          </Typography>
+          <GuideMessage
+            AnswerDisplay={AnswerDisplay}
+            lastAnswerCorrect={lastAnswerCorrect}
+          />
           {buttonFormulaData.map((data, index) => {
             return (
               <Box p={2} key={data.formula}>
-                <Button
-                  variant="contained"
-                  style={{
-                    width: process.env.REACT_APP_BUTTON_WIDTH,
-                    color: 'white',
-                    backgroundColor: answerButtonColor[index],
-                  }}
-                  onClick={() => handleAnswerAction(index)}
-                >
-                  {data.formula}
-                </Button>
+                <AnswerButton
+                  index={index}
+                  formula={data.formula}
+                  onClickAction={handleAnswerAction}
+                />
                 <Box height={20}>
-                  {displayAnswer && (
-                    <Typography align="center">
-                      {`${data.num} → 2まで${data.abs} ${
-                        index === correctAnswerIndex ? '〇' : '×'
-                      }`}
-                    </Typography>
+                  {AnswerDisplay && (
+                    <AnswerGuide
+                      index={index}
+                      calcResult={data.num}
+                      abs={data.abs}
+                      correctAnswerIndex={correctAnswerIndex}
+                    />
                   )}
                 </Box>
               </Box>
