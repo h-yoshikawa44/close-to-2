@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
+import GameGuide from './organisms/GameGuide';
+import SelectAnswerBlock from './organisms/SelectAnswerBlock';
 import SelectDifficultyModal from './organisms/SelectDifficultyModal';
-import CountDownTimer from './molecules/CountDownTimer';
-import CorrectAnswerCounter from './molecules/CorrectAnswerCounter';
-import GuideMessage from './atoms/GuideMessage';
-import AnswerBlock from './molecules/AnswerBlock';
 import CompleteModal from './organisms/CompleteModal';
 
 const App = () => {
@@ -20,7 +18,7 @@ const App = () => {
   const [diffculty, setDiffculty] = useState(DIFFCULTY_EASY);
   const [partsCount, setPartsCount] = useState(1);
   const [buttonFormulaData, setButtonFormulaData] = useState([]);
-  const [correctAnswerIndex, setCorrectAnswerIndex] = useState(null);
+  const [correctAnswerIndex, setCorrectAnswerIndex] = useState(-1);
   const [answerCount, updateAnswerCount] = useState(0);
   const [correctAnswerCount, updateCorrectAnswerCount] = useState(0);
   const [difficultyModalOpen, updateDifficultyModalOpen] = useState(true);
@@ -204,29 +202,18 @@ const App = () => {
           flexDirection="column"
           alignItems="center"
         >
-          <Box display="flex">
-            <CountDownTimer countDowntime={countDowntime} />
-            <CorrectAnswerCounter correctAnswerCount={correctAnswerCount} />
-          </Box>
-          <GuideMessage
+          <GameGuide
+            countDowntime={countDowntime}
+            correctAnswerCount={correctAnswerCount}
             answerDisplay={answerDisplay}
             lastAnswerCorrect={lastAnswerCorrect}
           />
-          {buttonFormulaData.map((data, index) => {
-            return (
-              <Box p={2} key={data.formula}>
-                <AnswerBlock
-                  index={index}
-                  calcResult={data.calcResult}
-                  formula={data.formula}
-                  abs={data.abs}
-                  answerDisplay={answerDisplay}
-                  correctAnswerIndex={correctAnswerIndex}
-                  handleAnswerAction={handleAnswerAction}
-                />
-              </Box>
-            );
-          })}
+          <SelectAnswerBlock
+            buttonFormulaData={buttonFormulaData}
+            answerDisplay={answerDisplay}
+            correctAnswerIndex={correctAnswerIndex}
+            handleAnswerAction={handleAnswerAction}
+          />
         </Box>
       </Container>
       <SelectDifficultyModal
