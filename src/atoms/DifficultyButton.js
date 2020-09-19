@@ -2,28 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from '@material-ui/core';
 import green from '@material-ui/core/colors/green';
+import * as Diffculty from '../constants/Diffculty';
 
 const DifficultyButton = ({ difficulty, onClickAction }) => {
   return (
     <>
-      {difficulty === '初級' && (
+      {difficulty === Diffculty.EASY && (
         <Button
           variant="contained"
           style={{ color: 'white', backgroundColor: green[600] }}
           onClick={() => onClickAction(difficulty)}
         >
-          {`初級（数値${process.env.REACT_APP_EASY_FORMULA_PARTS_COUNT}つ）`}
+          {`${Diffculty.EASY}（数値${process.env.REACT_APP_EASY_FORMULA_PARTS_COUNT}つ）`}
         </Button>
       )}
-      {(difficulty === '中級' || difficulty === '上級') && (
+      {(difficulty === Diffculty.NORMAL || difficulty === Diffculty.HARD) && (
         <Button
           variant="contained"
-          color={difficulty === '中級' ? 'primary' : 'secondary'}
+          color={difficulty === Diffculty.NORMAL ? 'primary' : 'secondary'}
           onClick={() => onClickAction(difficulty)}
         >
-          {difficulty === '中級'
-            ? `中級（数値${process.env.REACT_APP_NORMAL_FORMULA_PARTS_COUNT}つ）`
-            : `上級（数値${process.env.REACT_APP_HARD_FORMULA_PARTS_COUNT}つ）`}
+          {difficulty === Diffculty.NORMAL
+            ? `${Diffculty.NORMAL}（数値${process.env.REACT_APP_NORMAL_FORMULA_PARTS_COUNT}つ）`
+            : `${Diffculty.HARD}（数値${process.env.REACT_APP_HARD_FORMULA_PARTS_COUNT}つ）`}
         </Button>
       )}
     </>

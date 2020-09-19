@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Box, Fade, Modal } from '@material-ui/core';
+import * as Diffculty from '../constants/Diffculty';
 import DifficultyButton from '../atoms/DifficultyButton';
 
 const SelectDifficultyModal = ({ open, handleSelectDifficultyAction }) => {
@@ -33,19 +34,19 @@ const SelectDifficultyModal = ({ open, handleSelectDifficultyAction }) => {
           <>
             <Box p={2}>
               <DifficultyButton
-                difficulty="初級"
+                difficulty={Diffculty.EASY}
                 onClickAction={handleSelectDifficultyAction}
               />
             </Box>
             <Box p={2}>
               <DifficultyButton
-                difficulty="中級"
+                difficulty={Diffculty.NORMAL}
                 onClickAction={handleSelectDifficultyAction}
               />
             </Box>
             <Box p={2}>
               <DifficultyButton
-                difficulty="上級"
+                difficulty={Diffculty.HARD}
                 onClickAction={handleSelectDifficultyAction}
               />
             </Box>
