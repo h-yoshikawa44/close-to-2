@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import TimerIcon from '@material-ui/icons/Timer';
-import PanoramaFishEyeIcon from '@material-ui/icons/PanoramaFishEye';
 import SelectDifficultyModal from './organisms/SelectDifficultyModal';
+import CountDownTimer from './molecules/CountDownTimer';
+import CorrectAnswerCounter from './molecules/CorrectAnswerCounter';
 import GuideMessage from './atoms/GuideMessage';
-import AnswerButton from './atoms/AnswerButton';
-import AnswerGuide from './atoms/AnswerGuide';
+import AnswerBlock from './molecules/AnswerBlock';
 import CompleteModal from './organisms/CompleteModal';
 
 const App = () => {
@@ -26,7 +24,7 @@ const App = () => {
   const [answerCount, updateAnswerCount] = useState(0);
   const [correctAnswerCount, updateCorrectAnswerCount] = useState(0);
   const [difficultyModalOpen, updateDifficultyModalOpen] = useState(true);
-  const [AnswerDisplay, updateAnswerDisplay] = useState(false);
+  const [answerDisplay, updateAnswerDisplay] = useState(false);
   const [lastAnswerCorrect, updateLastAnswerCorrect] = useState(false);
   const [completeModalOpen, updateCompleteModalOpen] = useState(false);
 
@@ -79,7 +77,7 @@ const App = () => {
     const abs = Math.abs(num - 2);
 
     const formulaData = {
-      num,
+      calcResult: num,
       formula,
       abs,
     };
@@ -207,37 +205,25 @@ const App = () => {
           alignItems="center"
         >
           <Box display="flex">
-            <Box m={2} fontSize="1.8rem">
-              <TimerIcon style={{ paddingRight: '5px' }} />
-              <>{countDowntime}</>
-            </Box>
-            <Box m={2} fontSize="1.8rem">
-              <PanoramaFishEyeIcon />
-              <>{`：${correctAnswerCount}`}</>
-            </Box>
+            <CountDownTimer countDowntime={countDowntime} />
+            <CorrectAnswerCounter correctAnswerCount={correctAnswerCount} />
           </Box>
           <GuideMessage
-            AnswerDisplay={AnswerDisplay}
+            answerDisplay={answerDisplay}
             lastAnswerCorrect={lastAnswerCorrect}
           />
           {buttonFormulaData.map((data, index) => {
             return (
               <Box p={2} key={data.formula}>
-                <AnswerButton
+                <AnswerBlock
                   index={index}
+                  calcResult={data.calcResult}
                   formula={data.formula}
-                  onClickAction={handleAnswerAction}
+                  abs={data.abs}
+                  answerDisplay={answerDisplay}
+                  correctAnswerIndex={correctAnswerIndex}
+                  handleAnswerAction={handleAnswerAction}
                 />
-                <Box height={20}>
-                  {AnswerDisplay && (
-                    <AnswerGuide
-                      index={index}
-                      calcResult={data.num}
-                      abs={data.abs}
-                      correctAnswerIndex={correctAnswerIndex}
-                    />
-                  )}
-                </Box>
               </Box>
             );
           })}
