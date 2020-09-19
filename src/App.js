@@ -1,8 +1,8 @@
 import React from 'react';
-import GameTemplate from './templates/GameTemplate';
+import Game from './pages/Game';
 
 const App = () => {
-  return <GameTemplate />;
+  return <Game />;
 };
 
 export default App;
