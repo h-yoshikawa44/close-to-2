@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
+import * as Operator from '../constants/Operator';
+import * as Diffculty from '../constants/Diffculty';
 import GameGuide from '../organisms/GameGuide';
 import SelectAnswerBlock from '../organisms/SelectAnswerBlock';
 import SelectDifficultyModal from '../organisms/SelectDifficultyModal';
 import CompleteModal from '../organisms/CompleteModal';
 
 const GameTemplate = () => {
-  const PLUS_OPERATOR = 'PLUS';
-  const MINUS_OPERATOR = 'MINUS';
-  const DIFFCULTY_EASY = '初級';
-  const DIFFCULTY_NORMAL = '中級';
-  const DIFFCULTY_HARD = '上級';
-
   const [countDowntime, updateCountDownTime] = useState(30);
   const [timerId, setTimerId] = useState(0);
-  const [diffculty, setDiffculty] = useState(DIFFCULTY_EASY);
+  const [diffculty, setDiffculty] = useState(Diffculty.EASY);
   const [partsCount, setPartsCount] = useState(1);
   const [buttonFormulaData, setButtonFormulaData] = useState([]);
   const [correctAnswerIndex, setCorrectAnswerIndex] = useState(-1);
@@ -44,9 +40,9 @@ const GameTemplate = () => {
   const getPartsOfFormula = () => {
     let operator;
     if (getRandomInt(100, 1) % 2 === 0) {
-      operator = PLUS_OPERATOR;
+      operator = Operator.PLUS;
     } else {
-      operator = MINUS_OPERATOR;
+      operator = Operator.MINUS;
     }
     const num = getRandomInt(199, -99);
     const parts = {
@@ -62,10 +58,10 @@ const GameTemplate = () => {
 
     for (let count = 1; count <= addPartsCount; count += 1) {
       const parts = getPartsOfFormula();
-      if (parts.operator === PLUS_OPERATOR) {
+      if (parts.operator === Operator.PLUS) {
         num += parts.num;
         formula += parts.num < 0 ? ` + (${parts.num})` : ` + ${parts.num}`;
-      } else if (parts.operator === MINUS_OPERATOR) {
+      } else if (parts.operator === Operator.MINUS) {
         num -= parts.num;
         formula += parts.num < 0 ? ` - (${parts.num})` : ` - ${parts.num}`;
       } else {
@@ -130,13 +126,13 @@ const GameTemplate = () => {
   const initialDiffcultySetting = (selectDiffculty) => {
     setDiffculty(selectDiffculty);
     switch (selectDiffculty) {
-      case DIFFCULTY_EASY:
+      case Diffculty.EASY:
         setPartsCount(process.env.REACT_APP_EASY_FORMULA_PARTS_COUNT);
         break;
-      case DIFFCULTY_NORMAL:
+      case Diffculty.NORMAL:
         setPartsCount(process.env.REACT_APP_NORMAL_FORMULA_PARTS_COUNT);
         break;
-      case DIFFCULTY_HARD:
+      case Diffculty.HARD:
         setPartsCount(process.env.REACT_APP_HARD_FORMULA_PARTS_COUNT);
         break;
       default:
