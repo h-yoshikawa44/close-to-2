@@ -2,18 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 
-const GuideMessage = ({ AnswerDisplay, lastAnswerCorrect }) => {
+const GuideMessage = ({ answerDisplay, lastAnswerCorrect }) => {
   return (
     <Typography>
-      {AnswerDisplay && lastAnswerCorrect && '正解！'}
-      {AnswerDisplay && !lastAnswerCorrect && '不正解...'}
-      {!AnswerDisplay && '一番「2」に近い式はどれかな？'}
+      {answerDisplay && lastAnswerCorrect && '正解！'}
+      {answerDisplay && !lastAnswerCorrect && '不正解...'}
+      {!answerDisplay && '一番「2」に近い式はどれかな？'}
     </Typography>
   );
 };
 
 GuideMessage.propTypes = {
-  AnswerDisplay: PropTypes.bool.isRequired,
+  answerDisplay: PropTypes.bool.isRequired,
   lastAnswerCorrect: PropTypes.bool.isRequired,
 };
 
