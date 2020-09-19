@@ -231,7 +231,7 @@ const App = () => {
                 <Button
                   variant="contained"
                   style={{
-                    width: '250px',
+                    width: process.env.REACT_APP_BUTTON_WIDTH,
                     color: 'white',
                     backgroundColor: answerButtonColor[index],
                   }}
