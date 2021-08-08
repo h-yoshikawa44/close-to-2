@@ -12,27 +12,25 @@ const AnswerBlock = ({
   answerDisplay,
   correctAnswerIndex,
   handleAnswerAction,
-}) => {
-  return (
-    <>
-      <AnswerButton
-        index={index}
-        formula={formula}
-        onClickAction={handleAnswerAction}
-      />
-      <Box height={20}>
-        {answerDisplay && (
-          <AnswerGuide
-            index={index}
-            calcResult={calcResult}
-            abs={abs}
-            correctAnswerIndex={correctAnswerIndex}
-          />
-        )}
-      </Box>
-    </>
-  );
-};
+}) => (
+  <>
+    <AnswerButton
+      index={index}
+      formula={formula}
+      onClickAction={handleAnswerAction}
+    />
+    <Box height={20}>
+      {answerDisplay && (
+        <AnswerGuide
+          index={index}
+          calcResult={calcResult}
+          abs={abs}
+          correctAnswerIndex={correctAnswerIndex}
+        />
+      )}
+    </Box>
+  </>
+);
 
 AnswerBlock.propTypes = {
   index: PropTypes.number.isRequired,

@@ -10,20 +10,18 @@ const GameGuide = ({
   correctAnswerCount,
   answerDisplay,
   lastAnswerCorrect,
-}) => {
-  return (
-    <>
-      <Box display="flex">
-        <CountDownTimer countDowntime={countDowntime} />
-        <CorrectAnswerCounter correctAnswerCount={correctAnswerCount} />
-      </Box>
-      <GuideMessage
-        answerDisplay={answerDisplay}
-        lastAnswerCorrect={lastAnswerCorrect}
-      />
-    </>
-  );
-};
+}) => (
+  <>
+    <Box display="flex">
+      <CountDownTimer countDowntime={countDowntime} />
+      <CorrectAnswerCounter correctAnswerCount={correctAnswerCount} />
+    </Box>
+    <GuideMessage
+      answerDisplay={answerDisplay}
+      lastAnswerCorrect={lastAnswerCorrect}
+    />
+  </>
+);
 
 GameGuide.propTypes = {
   countDowntime: PropTypes.number.isRequired,

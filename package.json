@@ -4,29 +4,30 @@
   "private": true,
   "homepage": "https://h-yoshikawa0724.github.io/close-to-2/",
   "dependencies": {
-    "@material-ui/core": "^4.11.0",
-    "@material-ui/icons": "^4.9.1",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "@testing-library/user-event": "^13.2.1",
     "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3",
-    "react-share": "^4.2.1"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "react-share": "^4.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "lint-check": "yarn lint:eslint && yarn check:prettier",
+    "lint:eslint": "yarn run -s eslint './src/**/*.{js,jsx,ts,tsx}'",
+    "check:prettier": "yarn run -s prettier --check './{public,src}/**/*.{js,jsx,ts,tsx,html,gql,graphql,json}'",
+    "fix": "yarn fix:eslint && yarn fix:prettier",
+    "fix:eslint": "yarn lint:eslint --fix",
+    "fix:prettier": "yarn check:prettier --write",
     "postbuild": "react-snap",
-    "deploy": "react-scripts build && gh-pages -d build",
-    "lint": "./node_modules/.bin/eslint \"src/**/*.js\"",
-    "format": "./node_modules/.bin/prettier-eslint --write \"src/**/*.js\""
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "deploy": "react-scripts build && gh-pages -d build"
   },
   "browserslist": {
     "production": [
@@ -41,13 +42,10 @@
     ]
   },
   "devDependencies": {
-    "eslint-config-airbnb": "^18.2.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "gh-pages": "^3.1.0",
-    "prettier": "^2.1.1",
-    "prettier-eslint": "^11.0.0",
-    "prettier-eslint-cli": "^5.0.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "gh-pages": "^3.2.3",
+    "prettier": "^2.3.2",
     "react-snap": "^1.23.0"
   }
 }
