@@ -33,9 +33,8 @@ const GameTemplate = () => {
     clearInterval(timerId);
   };
 
-  const getRandomInt = (count, initNum = 0) => {
-    return Math.floor(Math.random() * Math.floor(count) + initNum);
-  };
+  const getRandomInt = (count, initNum = 0) =>
+    Math.floor(Math.random() * Math.floor(count) + initNum);
 
   const getPartsOfFormula = () => {
     let operator;
@@ -65,6 +64,7 @@ const GameTemplate = () => {
         num -= parts.num;
         formula += parts.num < 0 ? ` - (${parts.num})` : ` - ${parts.num}`;
       } else {
+        // eslint-disable-next-line no-console
         console.log('error');
       }
     }
@@ -80,21 +80,17 @@ const GameTemplate = () => {
 
   // 正答が複数存在しうるかチェック
   const isDuplicationAbs = (formulaDataList) => {
-    const absList = formulaDataList.map((data) => {
-      return data.abs;
-    });
+    const absList = formulaDataList.map((data) => data.abs);
     return (
       Array.from(new Set(absList)).length < process.env.REACT_APP_BUTTON_COUNT
     );
   };
 
   const initialCorrectAnswerIndex = (formulaDataList) => {
-    const absList = formulaDataList.map((data, index) => {
-      return {
-        originalIndex: index,
-        abs: data.abs,
-      };
-    });
+    const absList = formulaDataList.map((data, index) => ({
+      originalIndex: index,
+      abs: data.abs,
+    }));
     absList.sort((a, b) => {
       if (a.abs < b.abs) {
         return -1;
@@ -136,6 +132,7 @@ const GameTemplate = () => {
         setPartsCount(process.env.REACT_APP_HARD_FORMULA_PARTS_COUNT);
         break;
       default:
+        // eslint-disable-next-line no-console
         console.log('error');
     }
   };

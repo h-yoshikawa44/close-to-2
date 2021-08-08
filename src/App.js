@@ -1,8 +1,6 @@
 import React from 'react';
 import Game from './pages/Game';
 
-const App = () => {
-  return <Game />;
-};
+const App = () => <Game />;
 
 export default App;

@@ -8,23 +8,20 @@ const SelectAnswerBlock = ({
   answerDisplay,
   correctAnswerIndex,
   handleAnswerAction,
-}) => {
-  return buttonFormulaData.map((data, index) => {
-    return (
-      <Box p={2} key={data.formula}>
-        <AnswerBlock
-          index={index}
-          calcResult={data.calcResult}
-          formula={data.formula}
-          abs={data.abs}
-          answerDisplay={answerDisplay}
-          correctAnswerIndex={correctAnswerIndex}
-          handleAnswerAction={handleAnswerAction}
-        />
-      </Box>
-    );
-  });
-};
+}) =>
+  buttonFormulaData.map((data, index) => (
+    <Box p={2} key={data.formula}>
+      <AnswerBlock
+        index={index}
+        calcResult={data.calcResult}
+        formula={data.formula}
+        abs={data.abs}
+        answerDisplay={answerDisplay}
+        correctAnswerIndex={correctAnswerIndex}
+        handleAnswerAction={handleAnswerAction}
+      />
+    </Box>
+  ));
 
 SelectAnswerBlock.propTypes = {
   buttonFormulaData: PropTypes.arrayOf(
