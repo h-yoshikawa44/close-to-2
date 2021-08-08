@@ -80,8 +80,14 @@ jobs:
       - name: Package Install
         run: yarn install
 
-      - name: Build & Deploy to GitHub Pages
-        run: yarn deploy
+      - name: Build
+        run: yarn build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
 
       - name: Slack Notification
         uses: 8398a7/action-slack@v3
