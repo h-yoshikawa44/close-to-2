@@ -1,15 +1,14 @@
 import React from 'react';
-import { hydrate, render } from 'react-dom';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { render } from 'react-snapshot';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
 
-// eslint-disable-next-line no-undef
-const rootElement = document.getElementById('root');
-if (rootElement.hasChildNodes()) {
-  hydrate(<App />, rootElement);
-} else {
-  render(<App />, rootElement);
-}
+render(
+  <App />,
+  // eslint-disable-next-line no-undef
+  document.getElementById('root')
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
