@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-import * as Operator from '../constants/Operator';
-import * as Diffculty from '../constants/Diffculty';
+import * as Operator from '../constants/operator';
+import * as Diffculty from '../constants/diffculty';
 import GameGuide from '../organisms/GameGuide';
 import SelectAnswerBlock from '../organisms/SelectAnswerBlock';
 import SelectDifficultyModal from '../organisms/SelectDifficultyModal';
 import CompleteModal from '../organisms/CompleteModal';
+import { BUTTON_COUNT, EASY, NORMAL, HARD } from '../constants/game';
 
 const GameTemplate = () => {
   const [countDowntime, updateCountDownTime] = useState(30);
@@ -81,9 +82,7 @@ const GameTemplate = () => {
   // 正答が複数存在しうるかチェック
   const isDuplicationAbs = (formulaDataList) => {
     const absList = formulaDataList.map((data) => data.abs);
-    return (
-      Array.from(new Set(absList)).length < process.env.REACT_APP_BUTTON_COUNT
-    );
+    return Array.from(new Set(absList)).length < BUTTON_COUNT;
   };
 
   const initialCorrectAnswerIndex = (formulaDataList) => {
@@ -107,11 +106,7 @@ const GameTemplate = () => {
     // 正答が複数存在するパターンの場合は、再度初期化しなおし。
     do {
       formulaDataList = [];
-      for (
-        let count = 1;
-        count <= process.env.REACT_APP_BUTTON_COUNT;
-        count += 1
-      ) {
+      for (let count = 1; count <= BUTTON_COUNT; count += 1) {
         formulaDataList.push(getFormulaData(addPartsCount));
       }
     } while (isDuplicationAbs(formulaDataList));
@@ -123,13 +118,13 @@ const GameTemplate = () => {
     setDiffculty(selectDiffculty);
     switch (selectDiffculty) {
       case Diffculty.EASY:
-        setPartsCount(process.env.REACT_APP_EASY_FORMULA_PARTS_COUNT);
+        setPartsCount(EASY.FORMULA_PARTS_COUNT);
         break;
       case Diffculty.NORMAL:
-        setPartsCount(process.env.REACT_APP_NORMAL_FORMULA_PARTS_COUNT);
+        setPartsCount(NORMAL.FORMULA_PARTS_COUNT);
         break;
       case Diffculty.HARD:
-        setPartsCount(process.env.REACT_APP_HARD_FORMULA_PARTS_COUNT);
+        setPartsCount(HARD.FORMULA_PARTS_COUNT);
         break;
       default:
         // eslint-disable-next-line no-console

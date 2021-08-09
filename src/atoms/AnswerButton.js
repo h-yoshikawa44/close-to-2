@@ -5,6 +5,7 @@ import orange from '@material-ui/core/colors/orange';
 import red from '@material-ui/core/colors/red';
 import green from '@material-ui/core/colors/green';
 import indigo from '@material-ui/core/colors/indigo';
+import { BUTTON_WIDTH } from '../constants/game';
 
 const AnswerButton = ({ index, formula, onClickAction }) => {
   const answerButtonColor = [orange[800], red[500], green[600], indigo[500]];
@@ -12,7 +13,7 @@ const AnswerButton = ({ index, formula, onClickAction }) => {
     <Button
       variant="contained"
       style={{
-        width: process.env.REACT_APP_BUTTON_WIDTH,
+        width: `${BUTTON_WIDTH}px`,
         color: 'white',
         backgroundColor: answerButtonColor[index],
       }}
