@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Box, Fade, Modal } from '@material-ui/core';
-import * as Diffculty from '../constants/Diffculty';
+import * as Diffculty from '../constants/diffculty';
 import DifficultyButton from '../atoms/DifficultyButton';
 
 const SelectDifficultyModal = ({ open, handleSelectDifficultyAction }) => (
