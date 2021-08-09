@@ -1,6 +1,6 @@
 import { VFC } from 'react';
-import { Button } from '@material-ui/core';
-import { BUTTON_WIDTH, BUTTON_COLORS } from '../constants/game';
+import Button from '@material-ui/core/Button';
+import { BUTTON_WIDTH, BUTTON_COLORS } from 'constants/game';
 
 type Props = {
   index: number;

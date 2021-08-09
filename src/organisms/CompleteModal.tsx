@@ -1,7 +1,7 @@
 import { VFC } from 'react';
 import { Box, Fade, Modal } from '@material-ui/core';
 import { TwitterShareButton, TwitterIcon } from 'react-share';
-import SecondaryButton from '../atoms/SecondaryButton';
+import SecondaryButton from '../components/atoms/SecondaryButton';
 import { DiffcultyJP } from '../models/Diffculty';
 
 type Props = {

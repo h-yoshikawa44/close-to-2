@@ -1,6 +1,6 @@
 import { VFC } from 'react';
 import { Box } from '@material-ui/core';
-import AnswerBlock from '../molecules/AnswerBlock';
+import AnswerBlock from '../components/molecules/AnswerBlock';
 import { Formula } from '../models/Formula';
 
 type Props = {

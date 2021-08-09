@@ -1,6 +1,6 @@
 import { VFC } from 'react';
 import { Box, Fade, Modal } from '@material-ui/core';
-import DifficultyButton from '../atoms/DifficultyButton';
+import DifficultyButton from '../components/atoms/DifficultyButton';
 import { Diffculty } from '../models/Diffculty';
 import { EASY, NORMAL, HARD } from '../constants/game';
 

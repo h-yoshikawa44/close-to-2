@@ -1,5 +1,5 @@
 import { VFC } from 'react';
-import { Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 
 type Props = {
   index: number;

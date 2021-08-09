@@ -1,7 +1,7 @@
 import { VFC } from 'react';
-import { Box } from '@material-ui/core';
-import AnswerButton from '../atoms/AnswerButton';
-import AnswerGuide from '../atoms/AnswerGuide';
+import Box from '@material-ui/core/Box';
+import AnswerButton from 'components/atoms/AnswerButton';
+import AnswerGuide from 'components/atoms/AnswerGuide';
 
 type Props = {
   index: number;

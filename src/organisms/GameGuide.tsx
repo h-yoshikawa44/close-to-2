@@ -1,8 +1,8 @@
 import { VFC } from 'react';
 import { Box } from '@material-ui/core';
-import CountDownTimer from '../molecules/CountDownTimer';
-import CorrectAnswerCounter from '../molecules/CorrectAnswerCounter';
-import GuideMessage from '../atoms/GuideMessage';
+import CountDownTimer from '../components/molecules/CountDownTimer';
+import CorrectAnswerCounter from '../components/molecules/CorrectAnswerCounter';
+import GuideMessage from '../components/atoms/GuideMessage';
 
 type Props = {
   countDowntime: number;

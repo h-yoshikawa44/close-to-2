@@ -1,5 +1,5 @@
 import { VFC } from 'react';
-import { Box } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
 import { Timer as TimerIcon } from '@material-ui/icons';
 
 type Props = {
