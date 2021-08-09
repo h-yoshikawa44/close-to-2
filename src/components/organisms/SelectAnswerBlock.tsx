@@ -1,7 +1,7 @@
 import { VFC } from 'react';
 import { Box } from '@material-ui/core';
-import AnswerBlock from '../components/molecules/AnswerBlock';
-import { Formula } from '../models/Formula';
+import AnswerBlock from 'components/molecules/AnswerBlock';
+import { Formula } from 'models/Formula';
 
 type Props = {
   buttonFormulaData: Formula[];

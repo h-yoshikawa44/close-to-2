@@ -1,8 +1,8 @@
 import { VFC } from 'react';
 import { Box, Fade, Modal } from '@material-ui/core';
 import { TwitterShareButton, TwitterIcon } from 'react-share';
-import SecondaryButton from '../components/atoms/SecondaryButton';
-import { DiffcultyJP } from '../models/Diffculty';
+import SecondaryButton from 'components/atoms/SecondaryButton';
+import { DiffcultyJP } from 'models/Diffculty';
 
 type Props = {
   open: boolean;
@@ -42,7 +42,7 @@ const CompleteModal: VFC<Props> = ({
         <p id="transition-modal-description">お疲れさまでしたー</p>
         <Box p={2}>
           <TwitterShareButton
-            url="https://h-yoshikawa0724.github.io/close-to-2"
+            url="https://h-yoshikawa44.github.io/close-to-2"
             title={`${diffculty} - ${correctAnswerCount}回正解！`}
             hashtags={['close_to_2', 'web1week']}
           >

@@ -1,10 +1,10 @@
 import { VFC, useState, useRef, useEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-import GameGuide from '../organisms/GameGuide';
-import SelectAnswerBlock from '../organisms/SelectAnswerBlock';
-import SelectDifficultyModal from '../organisms/SelectDifficultyModal';
-import CompleteModal from '../organisms/CompleteModal';
+import GameGuide from '../components/organisms/GameGuide';
+import SelectAnswerBlock from '../components/organisms/SelectAnswerBlock';
+import SelectDifficultyModal from '../components/organisms/SelectDifficultyModal';
+import CompleteModal from '../components/organisms/CompleteModal';
 import { Diffculty, DiffcultyInfo } from '../models/Diffculty';
 import { Formula } from '../models/Formula';
 import * as Operator from '../constants/operator';
