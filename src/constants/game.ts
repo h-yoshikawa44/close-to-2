@@ -4,6 +4,7 @@ import orange from '@material-ui/core/colors/orange';
 import red from '@material-ui/core/colors/red';
 import { DiffcultyInfo } from '../models/Diffculty';
 
+export const TIMER_LIMIT = 30;
 export const BUTTON_COUNT = 4;
 export const BUTTON_WIDTH = 250;
 

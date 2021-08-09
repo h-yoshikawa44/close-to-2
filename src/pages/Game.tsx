@@ -1,21 +1,21 @@
-import { VFC, useState, useRef, useEffect } from 'react';
+import { VFC, useState, useEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-import GameGuide from '../components/organisms/GameGuide';
-import SelectAnswerBlock from '../components/organisms/SelectAnswerBlock';
-import SelectDifficultyModal from '../components/organisms/SelectDifficultyModal';
-import CompleteModal from '../components/organisms/CompleteModal';
-import { Diffculty, DiffcultyInfo } from '../models/Diffculty';
-import { Formula } from '../models/Formula';
-import * as Operator from '../constants/operator';
-import { BUTTON_COUNT, EASY, NORMAL, HARD } from '../constants/game';
+import GameGuide from 'components/organisms/GameGuide';
+import SelectAnswerBlock from 'components/organisms/SelectAnswerBlock';
+import SelectDifficultyModal from 'components/organisms/SelectDifficultyModal';
+import CompleteModal from 'components/organisms/CompleteModal';
+import { Diffculty, DiffcultyInfo } from 'models/Diffculty';
+import { Formula } from 'models/Formula';
+import * as Operator from 'constants/operator';
+import { TIMER_LIMIT, BUTTON_COUNT, EASY, NORMAL, HARD } from 'constants/game';
+import useTimer from 'hooks/useTimer';
 
 const GameTemplate: VFC = () => {
-  const [countDowntime, updateCountDownTime] = useState<number>(30);
-  // const [timerId, setTimerId] = useState(0);
-  const intervalId = useRef<NodeJS.Timeout>();
+  const { countDownTime, startTimer, stopTimer, resetTimer } =
+    useTimer(TIMER_LIMIT);
+
   const [diffcultyInfo, setDiffcultyInfo] = useState<DiffcultyInfo>(EASY);
-  // const [partsCount, setPartsCount] = useState<number>(1);
   const [buttonFormulaData, setButtonFormulaData] = useState<Formula[]>([]);
   const [correctAnswerIndex, setCorrectAnswerIndex] = useState<number>(-1);
   const [answerCount, updateAnswerCount] = useState<number>(0);
@@ -25,17 +25,6 @@ const GameTemplate: VFC = () => {
   const [answerDisplay, updateAnswerDisplay] = useState<boolean>(false);
   const [lastAnswerCorrect, updateLastAnswerCorrect] = useState<boolean>(false);
   const [completeModalOpen, updateCompleteModalOpen] = useState<boolean>(false);
-
-  const countDown = () => {
-    updateCountDownTime((time) => time - 1);
-  };
-
-  const startTimer = () => {
-    intervalId.current = setInterval(countDown, 1000);
-  };
-  const stopTimer = () => {
-    if (intervalId.current) clearInterval(intervalId.current);
-  };
 
   const getRandomInt = (count: number, initNum = 0) =>
     Math.floor(Math.random() * Math.floor(count) + initNum);
@@ -118,19 +107,15 @@ const GameTemplate: VFC = () => {
   };
 
   const initialDiffcultySetting = (selectDiffculty: Diffculty) => {
-    // setDiffculty(selectDiffculty);
     switch (selectDiffculty) {
       case 'easy':
         setDiffcultyInfo(EASY);
-        // setPartsCount(EASY.FORMULA_PARTS_COUNT);
         break;
       case 'normal':
         setDiffcultyInfo(NORMAL);
-        // setPartsCount(NORMAL.FORMULA_PARTS_COUNT);
         break;
       case 'hard':
         setDiffcultyInfo(HARD);
-        // setPartsCount(HARD.FORMULA_PARTS_COUNT);
         break;
       default:
         // eslint-disable-next-line no-console
@@ -154,13 +139,13 @@ const GameTemplate: VFC = () => {
   }, [diffcultyInfo, answerCount]);
 
   useEffect(() => {
-    if (countDowntime === 0) {
+    if (countDownTime === 0) {
       stopTimer();
       updateCompleteModalOpen(true);
     }
     // TODO: react-hooks/exhaustive-depsルールを一時的に無効化
     // eslint-disable-next-line
-  }, [countDowntime]);
+  }, [countDownTime]);
 
   const handleSelectDifficultyAction = (selectDiffculty: Diffculty) => {
     initialDiffcultySetting(selectDiffculty);
@@ -179,7 +164,7 @@ const GameTemplate: VFC = () => {
 
   const handleRestartAction = () => {
     updateCompleteModalOpen(false);
-    updateCountDownTime(30);
+    resetTimer();
     updateCorrectAnswerCount(0);
     updateDifficultyModalOpen(true);
   };
@@ -197,7 +182,7 @@ const GameTemplate: VFC = () => {
           alignItems="center"
         >
           <GameGuide
-            countDowntime={countDowntime}
+            countDowntime={countDownTime}
             correctAnswerCount={correctAnswerCount}
             answerDisplay={answerDisplay}
             lastAnswerCorrect={lastAnswerCorrect}
