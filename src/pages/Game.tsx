@@ -1,40 +1,43 @@
-import React, { useState, useEffect } from 'react';
+import { VFC, useState, useRef, useEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-import * as Operator from '../constants/operator';
-import * as Diffculty from '../constants/diffculty';
 import GameGuide from '../organisms/GameGuide';
 import SelectAnswerBlock from '../organisms/SelectAnswerBlock';
 import SelectDifficultyModal from '../organisms/SelectDifficultyModal';
 import CompleteModal from '../organisms/CompleteModal';
+import { Diffculty, DiffcultyInfo } from '../models/Diffculty';
+import { Formula } from '../models/Formula';
+import * as Operator from '../constants/operator';
 import { BUTTON_COUNT, EASY, NORMAL, HARD } from '../constants/game';
 
-const GameTemplate = () => {
-  const [countDowntime, updateCountDownTime] = useState(30);
-  const [timerId, setTimerId] = useState(0);
-  const [diffculty, setDiffculty] = useState(Diffculty.EASY);
-  const [partsCount, setPartsCount] = useState(1);
-  const [buttonFormulaData, setButtonFormulaData] = useState([]);
-  const [correctAnswerIndex, setCorrectAnswerIndex] = useState(-1);
-  const [answerCount, updateAnswerCount] = useState(0);
-  const [correctAnswerCount, updateCorrectAnswerCount] = useState(0);
-  const [difficultyModalOpen, updateDifficultyModalOpen] = useState(true);
-  const [answerDisplay, updateAnswerDisplay] = useState(false);
-  const [lastAnswerCorrect, updateLastAnswerCorrect] = useState(false);
-  const [completeModalOpen, updateCompleteModalOpen] = useState(false);
+const GameTemplate: VFC = () => {
+  const [countDowntime, updateCountDownTime] = useState<number>(30);
+  // const [timerId, setTimerId] = useState(0);
+  const intervalId = useRef<NodeJS.Timeout>();
+  const [diffcultyInfo, setDiffcultyInfo] = useState<DiffcultyInfo>(EASY);
+  // const [partsCount, setPartsCount] = useState<number>(1);
+  const [buttonFormulaData, setButtonFormulaData] = useState<Formula[]>([]);
+  const [correctAnswerIndex, setCorrectAnswerIndex] = useState<number>(-1);
+  const [answerCount, updateAnswerCount] = useState<number>(0);
+  const [correctAnswerCount, updateCorrectAnswerCount] = useState<number>(0);
+  const [difficultyModalOpen, updateDifficultyModalOpen] =
+    useState<boolean>(true);
+  const [answerDisplay, updateAnswerDisplay] = useState<boolean>(false);
+  const [lastAnswerCorrect, updateLastAnswerCorrect] = useState<boolean>(false);
+  const [completeModalOpen, updateCompleteModalOpen] = useState<boolean>(false);
+
+  const countDown = () => {
+    updateCountDownTime((time) => time - 1);
+  };
 
   const startTimer = () => {
-    setTimerId(
-      setInterval(() => {
-        updateCountDownTime((time) => time - 1);
-      }, 1000)
-    );
+    intervalId.current = setInterval(countDown, 1000);
   };
   const stopTimer = () => {
-    clearInterval(timerId);
+    if (intervalId.current) clearInterval(intervalId.current);
   };
 
-  const getRandomInt = (count, initNum = 0) =>
+  const getRandomInt = (count: number, initNum = 0) =>
     Math.floor(Math.random() * Math.floor(count) + initNum);
 
   const getPartsOfFormula = () => {
@@ -52,7 +55,7 @@ const GameTemplate = () => {
     return parts;
   };
 
-  const getFormulaData = (addPartsCount) => {
+  const getFormulaData = (addPartsCount: number) => {
     let num = getRandomInt(100);
     let formula = String(num);
 
@@ -80,12 +83,12 @@ const GameTemplate = () => {
   };
 
   // 正答が複数存在しうるかチェック
-  const isDuplicationAbs = (formulaDataList) => {
+  const isDuplicationAbs = (formulaDataList: Formula[]) => {
     const absList = formulaDataList.map((data) => data.abs);
     return Array.from(new Set(absList)).length < BUTTON_COUNT;
   };
 
-  const initialCorrectAnswerIndex = (formulaDataList) => {
+  const initialCorrectAnswerIndex = (formulaDataList: Formula[]) => {
     const absList = formulaDataList.map((data, index) => ({
       originalIndex: index,
       abs: data.abs,
@@ -100,7 +103,7 @@ const GameTemplate = () => {
   };
 
   const initialFormulaData = () => {
-    const addPartsCount = partsCount - 1;
+    const addPartsCount = diffcultyInfo.FORMULA_PARTS_COUNT - 1;
     let formulaDataList;
 
     // 正答が複数存在するパターンの場合は、再度初期化しなおし。
@@ -114,17 +117,20 @@ const GameTemplate = () => {
     setButtonFormulaData(formulaDataList);
   };
 
-  const initialDiffcultySetting = (selectDiffculty) => {
-    setDiffculty(selectDiffculty);
+  const initialDiffcultySetting = (selectDiffculty: Diffculty) => {
+    // setDiffculty(selectDiffculty);
     switch (selectDiffculty) {
-      case Diffculty.EASY:
-        setPartsCount(EASY.FORMULA_PARTS_COUNT);
+      case 'easy':
+        setDiffcultyInfo(EASY);
+        // setPartsCount(EASY.FORMULA_PARTS_COUNT);
         break;
-      case Diffculty.NORMAL:
-        setPartsCount(NORMAL.FORMULA_PARTS_COUNT);
+      case 'normal':
+        setDiffcultyInfo(NORMAL);
+        // setPartsCount(NORMAL.FORMULA_PARTS_COUNT);
         break;
-      case Diffculty.HARD:
-        setPartsCount(HARD.FORMULA_PARTS_COUNT);
+      case 'hard':
+        setDiffcultyInfo(HARD);
+        // setPartsCount(HARD.FORMULA_PARTS_COUNT);
         break;
       default:
         // eslint-disable-next-line no-console
@@ -132,7 +138,7 @@ const GameTemplate = () => {
     }
   };
 
-  const checkAnswer = (index) => {
+  const checkAnswer = (index: number) => {
     if (index === correctAnswerIndex) {
       updateCorrectAnswerCount((count) => count + 1);
       updateLastAnswerCorrect(true);
@@ -145,7 +151,7 @@ const GameTemplate = () => {
     initialFormulaData();
     // TODO: react-hooks/exhaustive-depsルールを一時的に無効化
     // eslint-disable-next-line
-  }, [partsCount, answerCount]);
+  }, [diffcultyInfo, answerCount]);
 
   useEffect(() => {
     if (countDowntime === 0) {
@@ -156,13 +162,13 @@ const GameTemplate = () => {
     // eslint-disable-next-line
   }, [countDowntime]);
 
-  const handleSelectDifficultyAction = (selectDiffculty) => {
+  const handleSelectDifficultyAction = (selectDiffculty: Diffculty) => {
     initialDiffcultySetting(selectDiffculty);
     updateDifficultyModalOpen(false);
     startTimer();
   };
 
-  const handleAnswerAction = (index) => {
+  const handleAnswerAction = (index: number) => {
     checkAnswer(index);
     updateAnswerDisplay(true);
     setTimeout(() => {
@@ -210,7 +216,7 @@ const GameTemplate = () => {
       />
       <CompleteModal
         open={completeModalOpen}
-        diffculty={diffculty}
+        diffculty={diffcultyInfo.JP_WORD}
         correctAnswerCount={correctAnswerCount}
         handleRestartAction={handleRestartAction}
       />

@@ -1,10 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { VFC } from 'react';
 import { Box, Fade, Modal } from '@material-ui/core';
 import { TwitterShareButton, TwitterIcon } from 'react-share';
 import SecondaryButton from '../atoms/SecondaryButton';
+import { DiffcultyJP } from '../models/Diffculty';
 
-const CompleteModal = ({
+type Props = {
+  open: boolean;
+  diffculty: DiffcultyJP;
+  correctAnswerCount: number;
+  handleRestartAction: VoidFunction;
+};
+
+const CompleteModal: VFC<Props> = ({
   open,
   diffculty,
   correctAnswerCount,
@@ -52,12 +59,5 @@ const CompleteModal = ({
     </Fade>
   </Modal>
 );
-
-CompleteModal.propTypes = {
-  open: PropTypes.bool.isRequired,
-  diffculty: PropTypes.string.isRequired,
-  correctAnswerCount: PropTypes.number.isRequired,
-  handleRestartAction: PropTypes.func.isRequired,
-};
 
 export default CompleteModal;

@@ -1,11 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { VFC } from 'react';
 import { Box } from '@material-ui/core';
 import CountDownTimer from '../molecules/CountDownTimer';
 import CorrectAnswerCounter from '../molecules/CorrectAnswerCounter';
 import GuideMessage from '../atoms/GuideMessage';
 
-const GameGuide = ({
+type Props = {
+  countDowntime: number;
+  correctAnswerCount: number;
+  answerDisplay: boolean;
+  lastAnswerCorrect: boolean;
+};
+
+const GameGuide: VFC<Props> = ({
   countDowntime,
   correctAnswerCount,
   answerDisplay,
@@ -22,12 +28,5 @@ const GameGuide = ({
     />
   </>
 );
-
-GameGuide.propTypes = {
-  countDowntime: PropTypes.number.isRequired,
-  correctAnswerCount: PropTypes.number.isRequired,
-  answerDisplay: PropTypes.bool.isRequired,
-  lastAnswerCorrect: PropTypes.bool.isRequired,
-};
 
 export default GameGuide;

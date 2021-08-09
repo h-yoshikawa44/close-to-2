@@ -1,10 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { VFC } from 'react';
 import { Box } from '@material-ui/core';
 import AnswerButton from '../atoms/AnswerButton';
 import AnswerGuide from '../atoms/AnswerGuide';
 
-const AnswerBlock = ({
+type Props = {
+  index: number;
+  calcResult: number;
+  formula: string;
+  abs: number;
+  answerDisplay: boolean;
+  correctAnswerIndex: number;
+  handleAnswerAction: (index: number) => void;
+};
+
+const AnswerBlock: VFC<Props> = ({
   index,
   calcResult,
   formula,
@@ -31,15 +40,5 @@ const AnswerBlock = ({
     </Box>
   </>
 );
-
-AnswerBlock.propTypes = {
-  index: PropTypes.number.isRequired,
-  calcResult: PropTypes.number.isRequired,
-  formula: PropTypes.string.isRequired,
-  abs: PropTypes.number.isRequired,
-  answerDisplay: PropTypes.bool.isRequired,
-  correctAnswerIndex: PropTypes.number.isRequired,
-  handleAnswerAction: PropTypes.func.isRequired,
-};
 
 export default AnswerBlock;
