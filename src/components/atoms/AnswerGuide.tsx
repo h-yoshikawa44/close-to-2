@@ -5,17 +5,19 @@ type Props = {
   index: number;
   calcResult: number;
   abs: number;
-  correctAnswerIndex: number;
+  isCorrect: boolean;
+  // correctAnswerIndex: number;
 };
 
 const AnswerGuide: VFC<Props> = ({
   index,
   calcResult,
   abs,
-  correctAnswerIndex,
+  isCorrect,
+  // correctAnswerIndex,
 }) => (
   <Typography align="center">
-    {`${calcResult} → 2まで${abs} ${index === correctAnswerIndex ? '〇' : '×'}`}
+    {`${calcResult} → 2まで${abs} ${isCorrect ? '〇' : '×'}`}
   </Typography>
 );
 

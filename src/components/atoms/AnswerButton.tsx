@@ -5,10 +5,16 @@ import { BUTTON_WIDTH, BUTTON_COLORS } from 'constants/game';
 type Props = {
   index: number;
   formula: string;
-  onClickAction: (index: number) => void;
+  isCorrect: boolean;
+  onClickAction: (isCorrect: boolean) => void;
 };
 
-const AnswerButton: VFC<Props> = ({ index, formula, onClickAction }) => (
+const AnswerButton: VFC<Props> = ({
+  index,
+  formula,
+  isCorrect,
+  onClickAction,
+}) => (
   <Button
     variant="contained"
     style={{
@@ -16,7 +22,7 @@ const AnswerButton: VFC<Props> = ({ index, formula, onClickAction }) => (
       color: 'white',
       backgroundColor: BUTTON_COLORS[index],
     }}
-    onClick={() => onClickAction(index)}
+    onClick={() => onClickAction(isCorrect)}
   >
     {formula}
   </Button>

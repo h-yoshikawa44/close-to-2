@@ -6,14 +6,14 @@ import { Formula } from 'models/Formula';
 type Props = {
   buttonFormulaData: Formula[];
   answerDisplay: boolean;
-  correctAnswerIndex: number;
-  handleAnswerAction: (index: number) => void;
+  // correctAnswerIndex: number;
+  handleAnswerAction: (isCorrect: boolean) => void;
 };
 
 const SelectAnswerBlock: VFC<Props> = ({
   buttonFormulaData,
   answerDisplay,
-  correctAnswerIndex,
+  // correctAnswerIndex,
   handleAnswerAction,
 }) => (
   <Box>
@@ -24,8 +24,9 @@ const SelectAnswerBlock: VFC<Props> = ({
           calcResult={data.calcResult}
           formula={data.formula}
           abs={data.abs}
+          isCorrect={data.isCorrect}
           answerDisplay={answerDisplay}
-          correctAnswerIndex={correctAnswerIndex}
+          // correctAnswerIndex={correctAnswerIndex}
           handleAnswerAction={handleAnswerAction}
         />
       </Box>
