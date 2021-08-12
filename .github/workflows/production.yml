@@ -83,7 +83,7 @@ jobs:
       - name: Build & Deploy to GitHub Pages
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          yarn deploy -- -u "github-actions-bot <support+actions@github.com>"
+          yarn deploy -- -u "github-actions-bot <support+actions@github.com>" --message \"${{ github.event.head_commit.message }}\"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
