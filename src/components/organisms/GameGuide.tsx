@@ -1,5 +1,5 @@
 import { VFC } from 'react';
-import { Box } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
 import CountDownTimer from 'components/molecules/CountDownTimer';
 import CorrectAnswerCounter from 'components/molecules/CorrectAnswerCounter';
 import GuideMessage from 'components/atoms/GuideMessage';
