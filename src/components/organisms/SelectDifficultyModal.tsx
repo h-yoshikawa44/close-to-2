@@ -1,10 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Box, Fade, Modal } from '@material-ui/core';
-import * as Diffculty from '../constants/diffculty';
-import DifficultyButton from '../atoms/DifficultyButton';
+import { VFC } from 'react';
+import Box from '@material-ui/core/Box';
+import Fade from '@material-ui/core/Fade';
+import Modal from '@material-ui/core/Modal';
+import DifficultyButton from 'components/atoms/DifficultyButton';
+import { Diffculty } from 'models/Diffculty';
+import { EASY, NORMAL, HARD } from 'constants/game';
 
-const SelectDifficultyModal = ({ open, handleSelectDifficultyAction }) => (
+type Props = {
+  open: boolean;
+  handleSelectDifficulty: (selectDiffculty: Diffculty) => void;
+};
+
+const SelectDifficultyModal: VFC<Props> = ({
+  open,
+  handleSelectDifficulty,
+}) => (
   <Modal
     aria-labelledby="transition-modal-title"
     aria-describedby="transition-modal-description"
@@ -33,20 +43,20 @@ const SelectDifficultyModal = ({ open, handleSelectDifficultyAction }) => (
         <>
           <Box p={2}>
             <DifficultyButton
-              difficulty={Diffculty.EASY}
-              onClickAction={handleSelectDifficultyAction}
+              difficultyInfo={EASY}
+              onClickAction={handleSelectDifficulty}
             />
           </Box>
           <Box p={2}>
             <DifficultyButton
-              difficulty={Diffculty.NORMAL}
-              onClickAction={handleSelectDifficultyAction}
+              difficultyInfo={NORMAL}
+              onClickAction={handleSelectDifficulty}
             />
           </Box>
           <Box p={2}>
             <DifficultyButton
-              difficulty={Diffculty.HARD}
-              onClickAction={handleSelectDifficultyAction}
+              difficultyInfo={HARD}
+              onClickAction={handleSelectDifficulty}
             />
           </Box>
         </>
@@ -54,10 +64,5 @@ const SelectDifficultyModal = ({ open, handleSelectDifficultyAction }) => (
     </Fade>
   </Modal>
 );
-
-SelectDifficultyModal.propTypes = {
-  open: PropTypes.bool.isRequired,
-  handleSelectDifficultyAction: PropTypes.func.isRequired,
-};
 
 export default SelectDifficultyModal;
