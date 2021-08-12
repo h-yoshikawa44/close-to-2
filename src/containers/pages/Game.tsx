@@ -31,13 +31,13 @@ const EnhancedGame: VFC = () => {
     }
   }, [countDownTime, stopTimer]);
 
-  const handleSelectDifficultyAction = (diffculty: Diffculty) => {
+  const handleSelectDifficulty = (diffculty: Diffculty) => {
     selectDiffculty(diffculty);
     updateDifficultyModalOpen(false);
     startTimer();
   };
 
-  const handleRestartAction = () => {
+  const handleRestart = () => {
     updateCompleteModalOpen(false);
     resetTimer();
     resetAnswerCount();
@@ -55,8 +55,8 @@ const EnhancedGame: VFC = () => {
       difficultyModalOpen={difficultyModalOpen}
       completeModalOpen={completeModalOpen}
       handleAnswer={handleAnswer}
-      handleSelectDifficultyAction={handleSelectDifficultyAction}
-      handleRestartAction={handleRestartAction}
+      handleSelectDifficulty={handleSelectDifficulty}
+      handleRestart={handleRestart}
     />
   );
 };

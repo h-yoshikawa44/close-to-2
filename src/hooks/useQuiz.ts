@@ -15,7 +15,6 @@ const useQuiz = (): {
 } => {
   const [diffcultyInfo, setDiffcultyInfo] = useState<DiffcultyInfo>(EASY);
   const [formulaData, setFormulaData] = useState<Formula[]>([]);
-  // const [correctAnswerIndex, setCorrectAnswerIndex] = useState<number>(-1);
   const [answerCount, setAnswerCount] = useState<number>(0);
   const [correctAnswerCount, setCorrectAnswerCount] = useState<number>(0);
   const [isAnswerDisplay, setIsAnswerDisplay] = useState<boolean>(false);
@@ -76,18 +75,6 @@ const useQuiz = (): {
 
   // 正答フラグを反映した式データを取得
   const getSettingCorrectFormulaData = useCallback((formulaList: Formula[]) => {
-    // const absList = formulaDataList.map((data, index) => ({
-    //   originalIndex: index,
-    //   abs: data.abs,
-    // }));
-    // absList.sort((a, b) => {
-    //   if (a.abs < b.abs) {
-    //     return -1;
-    //   }
-    //   return 1;
-    // });
-    // setCorrectAnswerIndex(absList[0].originalIndex);
-
     const min = formulaList
       .map((formula) => formula.abs)
       .reduce((prev, current) => Math.min(prev, current));

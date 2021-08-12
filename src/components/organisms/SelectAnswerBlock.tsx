@@ -4,20 +4,18 @@ import AnswerBlock from 'components/molecules/AnswerBlock';
 import { Formula } from 'models/Formula';
 
 type Props = {
-  buttonFormulaData: Formula[];
-  answerDisplay: boolean;
-  // correctAnswerIndex: number;
-  handleAnswerAction: (isCorrect: boolean) => void;
+  formulaData: Formula[];
+  isAnswerDisplay: boolean;
+  handleAnswer: (isCorrect: boolean) => void;
 };
 
 const SelectAnswerBlock: VFC<Props> = ({
-  buttonFormulaData,
-  answerDisplay,
-  // correctAnswerIndex,
-  handleAnswerAction,
+  formulaData,
+  isAnswerDisplay,
+  handleAnswer,
 }) => (
   <Box>
-    {buttonFormulaData.map((data, index) => (
+    {formulaData.map((data, index) => (
       <Box p={2} key={data.formula}>
         <AnswerBlock
           index={index}
@@ -25,9 +23,8 @@ const SelectAnswerBlock: VFC<Props> = ({
           formula={data.formula}
           abs={data.abs}
           isCorrect={data.isCorrect}
-          answerDisplay={answerDisplay}
-          // correctAnswerIndex={correctAnswerIndex}
-          handleAnswerAction={handleAnswerAction}
+          isAnswerDisplay={isAnswerDisplay}
+          handleAnswer={handleAnswer}
         />
       </Box>
     ))}

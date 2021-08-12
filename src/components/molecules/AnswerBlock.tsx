@@ -9,9 +9,8 @@ type Props = {
   formula: string;
   abs: number;
   isCorrect: boolean;
-  answerDisplay: boolean;
-  // correctAnswerIndex: number;
-  handleAnswerAction: (isCorrect: boolean) => void;
+  isAnswerDisplay: boolean;
+  handleAnswer: (isCorrect: boolean) => void;
 };
 
 const AnswerBlock: VFC<Props> = ({
@@ -20,26 +19,19 @@ const AnswerBlock: VFC<Props> = ({
   formula,
   abs,
   isCorrect,
-  answerDisplay,
-  // correctAnswerIndex,
-  handleAnswerAction,
+  isAnswerDisplay,
+  handleAnswer,
 }) => (
   <>
     <AnswerButton
       index={index}
       formula={formula}
       isCorrect={isCorrect}
-      onClickAction={handleAnswerAction}
+      onClickAction={handleAnswer}
     />
     <Box height={20}>
-      {answerDisplay && (
-        <AnswerGuide
-          index={index}
-          calcResult={calcResult}
-          abs={abs}
-          isCorrect={isCorrect}
-          // correctAnswerIndex={correctAnswerIndex}
-        />
+      {isAnswerDisplay && (
+        <AnswerGuide calcResult={calcResult} abs={abs} isCorrect={isCorrect} />
       )}
     </Box>
   </>

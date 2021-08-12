@@ -6,12 +6,12 @@ import { EASY, NORMAL, HARD } from 'constants/game';
 
 type Props = {
   open: boolean;
-  handleSelectDifficultyAction: (selectDiffculty: Diffculty) => void;
+  handleSelectDifficulty: (selectDiffculty: Diffculty) => void;
 };
 
 const SelectDifficultyModal: VFC<Props> = ({
   open,
-  handleSelectDifficultyAction,
+  handleSelectDifficulty,
 }) => (
   <Modal
     aria-labelledby="transition-modal-title"
@@ -42,19 +42,19 @@ const SelectDifficultyModal: VFC<Props> = ({
           <Box p={2}>
             <DifficultyButton
               difficultyInfo={EASY}
-              onClickAction={handleSelectDifficultyAction}
+              onClickAction={handleSelectDifficulty}
             />
           </Box>
           <Box p={2}>
             <DifficultyButton
               difficultyInfo={NORMAL}
-              onClickAction={handleSelectDifficultyAction}
+              onClickAction={handleSelectDifficulty}
             />
           </Box>
           <Box p={2}>
             <DifficultyButton
               difficultyInfo={HARD}
-              onClickAction={handleSelectDifficultyAction}
+              onClickAction={handleSelectDifficulty}
             />
           </Box>
         </>

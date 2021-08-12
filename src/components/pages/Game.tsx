@@ -18,8 +18,8 @@ type Props = {
   difficultyModalOpen: boolean;
   completeModalOpen: boolean;
   handleAnswer: (isCorrect: boolean) => void;
-  handleSelectDifficultyAction: (diffculty: Diffculty) => void;
-  handleRestartAction: VoidFunction;
+  handleSelectDifficulty: (diffculty: Diffculty) => void;
+  handleRestart: VoidFunction;
 };
 
 const Game: VFC<Props> = ({
@@ -32,8 +32,8 @@ const Game: VFC<Props> = ({
   difficultyModalOpen,
   completeModalOpen,
   handleAnswer,
-  handleSelectDifficultyAction,
-  handleRestartAction,
+  handleSelectDifficulty,
+  handleRestart,
 }) => (
   <>
     <Container maxWidth="sm">
@@ -49,26 +49,25 @@ const Game: VFC<Props> = ({
         <GameGuide
           countDowntime={countDownTime}
           correctAnswerCount={correctAnswerCount}
-          answerDisplay={isAnswerDisplay}
-          lastAnswerCorrect={isLastAnswerCorrect}
+          isAnswerDisplay={isAnswerDisplay}
+          isLastAnswerCorrect={isLastAnswerCorrect}
         />
         <SelectAnswerBlock
-          buttonFormulaData={formulaData}
-          answerDisplay={isAnswerDisplay}
-          // correctAnswerIndex={isCorrectAnswerIndex}
-          handleAnswerAction={handleAnswer}
+          formulaData={formulaData}
+          isAnswerDisplay={isAnswerDisplay}
+          handleAnswer={handleAnswer}
         />
       </Box>
     </Container>
     <SelectDifficultyModal
       open={difficultyModalOpen}
-      handleSelectDifficultyAction={handleSelectDifficultyAction}
+      handleSelectDifficulty={handleSelectDifficulty}
     />
     <CompleteModal
       open={completeModalOpen}
       diffculty={diffcultyInfo.JP_WORD}
       correctAnswerCount={correctAnswerCount}
-      handleRestartAction={handleRestartAction}
+      handleRestart={handleRestart}
     />
   </>
 );

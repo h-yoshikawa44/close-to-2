@@ -2,15 +2,15 @@ import { VFC } from 'react';
 import Typography from '@material-ui/core/Typography';
 
 type Props = {
-  answerDisplay: boolean;
-  lastAnswerCorrect: boolean;
+  isAnswerDisplay: boolean;
+  isLastAnswerCorrect: boolean;
 };
 
-const GuideMessage: VFC<Props> = ({ answerDisplay, lastAnswerCorrect }) => (
+const GuideMessage: VFC<Props> = ({ isAnswerDisplay, isLastAnswerCorrect }) => (
   <Typography>
-    {answerDisplay && lastAnswerCorrect && '正解！'}
-    {answerDisplay && !lastAnswerCorrect && '不正解...'}
-    {!answerDisplay && '一番「2」に近い式はどれかな？'}
+    {isAnswerDisplay && isLastAnswerCorrect && '正解！'}
+    {isAnswerDisplay && !isLastAnswerCorrect && '不正解...'}
+    {!isAnswerDisplay && '一番「2」に近い式はどれかな？'}
   </Typography>
 );
 

@@ -8,14 +8,14 @@ type Props = {
   open: boolean;
   diffculty: DiffcultyJP;
   correctAnswerCount: number;
-  handleRestartAction: VoidFunction;
+  handleRestart: VoidFunction;
 };
 
 const CompleteModal: VFC<Props> = ({
   open,
   diffculty,
   correctAnswerCount,
-  handleRestartAction,
+  handleRestart,
 }) => (
   <Modal
     aria-labelledby="transition-modal-title"
@@ -50,10 +50,7 @@ const CompleteModal: VFC<Props> = ({
           </TwitterShareButton>
         </Box>
         <Box p={2}>
-          <SecondaryButton
-            text="再チャレンジ"
-            onClickAction={handleRestartAction}
-          />
+          <SecondaryButton text="再チャレンジ" onClickAction={handleRestart} />
         </Box>
       </Box>
     </Fade>

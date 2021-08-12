@@ -7,15 +7,15 @@ import GuideMessage from 'components/atoms/GuideMessage';
 type Props = {
   countDowntime: number;
   correctAnswerCount: number;
-  answerDisplay: boolean;
-  lastAnswerCorrect: boolean;
+  isAnswerDisplay: boolean;
+  isLastAnswerCorrect: boolean;
 };
 
 const GameGuide: VFC<Props> = ({
   countDowntime,
   correctAnswerCount,
-  answerDisplay,
-  lastAnswerCorrect,
+  isAnswerDisplay,
+  isLastAnswerCorrect,
 }) => (
   <>
     <Box display="flex">
@@ -23,8 +23,8 @@ const GameGuide: VFC<Props> = ({
       <CorrectAnswerCounter correctAnswerCount={correctAnswerCount} />
     </Box>
     <GuideMessage
-      answerDisplay={answerDisplay}
-      lastAnswerCorrect={lastAnswerCorrect}
+      isAnswerDisplay={isAnswerDisplay}
+      isLastAnswerCorrect={isLastAnswerCorrect}
     />
   </>
 );
