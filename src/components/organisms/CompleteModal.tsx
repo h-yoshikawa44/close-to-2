@@ -1,14 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Box, Fade, Modal } from '@material-ui/core';
+import { VFC } from 'react';
+import Box from '@material-ui/core/Box';
+import Fade from '@material-ui/core/Fade';
+import Modal from '@material-ui/core/Modal';
 import { TwitterShareButton, TwitterIcon } from 'react-share';
-import SecondaryButton from '../atoms/SecondaryButton';
+import SecondaryButton from 'components/atoms/SecondaryButton';
+import { DiffcultyJP } from 'models/Diffculty';
 
-const CompleteModal = ({
+type Props = {
+  open: boolean;
+  diffculty: DiffcultyJP;
+  correctAnswerCount: number;
+  handleRestart: VoidFunction;
+};
+
+const CompleteModal: VFC<Props> = ({
   open,
   diffculty,
   correctAnswerCount,
-  handleRestartAction,
+  handleRestart,
 }) => (
   <Modal
     aria-labelledby="transition-modal-title"
@@ -35,7 +44,7 @@ const CompleteModal = ({
         <p id="transition-modal-description">お疲れさまでしたー</p>
         <Box p={2}>
           <TwitterShareButton
-            url="https://h-yoshikawa0724.github.io/close-to-2"
+            url="https://h-yoshikawa44.github.io/close-to-2"
             title={`${diffculty} - ${correctAnswerCount}回正解！`}
             hashtags={['close_to_2', 'web1week']}
           >
@@ -43,21 +52,11 @@ const CompleteModal = ({
           </TwitterShareButton>
         </Box>
         <Box p={2}>
-          <SecondaryButton
-            text="再チャレンジ"
-            onClickAction={handleRestartAction}
-          />
+          <SecondaryButton text="再チャレンジ" onClickAction={handleRestart} />
         </Box>
       </Box>
     </Fade>
   </Modal>
 );
-
-CompleteModal.propTypes = {
-  open: PropTypes.bool.isRequired,
-  diffculty: PropTypes.string.isRequired,
-  correctAnswerCount: PropTypes.number.isRequired,
-  handleRestartAction: PropTypes.func.isRequired,
-};
 
 export default CompleteModal;
