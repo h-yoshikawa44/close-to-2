@@ -11,7 +11,9 @@ title: "[リリース]vX.X.X"
 - ※リリース機能の概要
 
 ## 作業内容
-- [ ] developをmasterにマージ
-- [ ] masterをもとにリリースタグ付け
+- [ ] package.json のバージョン更新
+- [ ] CHANGELOG 更新
+- [ ] develop を master にマージ
+- [ ] master をもとにリリースタグ付け
 - [ ] デプロイ
 - [ ] 動作確認

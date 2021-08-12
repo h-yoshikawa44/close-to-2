@@ -1,8 +1,8 @@
 {
   "name": "close-to-2",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
-  "homepage": "https://h-yoshikawa0724.github.io/close-to-2/",
+  "homepage": "https://h-yoshikawa44.github.io/close-to-2/",
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
