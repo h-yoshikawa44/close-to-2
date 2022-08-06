@@ -33,7 +33,7 @@
     "fix:eslint": "yarn lint:eslint --fix",
     "fix:prettier": "yarn check:prettier --write",
     "deploy": "yarn build && gh-pages -d build",
-    "preinstall": "typesync || :"
+    "preinstall": "typesync || echo 'skip typesync'"
   },
   "browserslist": {
     "production": [
