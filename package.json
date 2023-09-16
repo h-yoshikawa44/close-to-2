@@ -15,7 +15,8 @@
     "fix:eslint": "npm run lint:eslint -- --fix",
     "fix:prettier": "npm run check:prettier -- --write",
     "deploy": "npm run build && gh-pages -d dist",
-    "preinstall": "typesync || echo 'skip typesync'"
+    "preinstall": "typesync || echo 'skip typesync'",
+    "prepare": "simple-git-hooks || echo 'Can not set git hooks'"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -31,6 +32,7 @@
     "@types/eslint": "^8.44.2",
     "@types/eslint-config-prettier": "^6.11.0",
     "@types/gh-pages": "^3.2.1",
+    "@types/lint-staged": "^13.2.0",
     "@types/node": "^18.17.1",
     "@types/prettier": "^3.0.0",
     "@types/react": "^18.2.21",
@@ -43,7 +45,9 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "gh-pages": "^6.0.0",
+    "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
+    "simple-git-hooks": "^2.9.0",
     "typescript": "^5.2.2",
     "typesync": "^0.11.1",
     "vite": "^4.4.9",
@@ -52,5 +56,18 @@
   "volta": {
     "node": "18.17.1",
     "npm": "9.6.7"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged",
+    "prepare-commit-msg": "./.githooks/prepare-commit-msg \"$@\""
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "prettier --write --loglevel=error",
+      "eslint --fix --quiet"
+    ],
+    "./**/*.{html,gql,graphql,json}": [
+      "prettier --write --loglevel=error"
+    ]
   }
 }
