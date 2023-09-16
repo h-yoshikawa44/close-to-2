@@ -23,7 +23,7 @@ const DifficultyButton: FC<Props> = ({ difficultyInfo, onClickAction }) => (
       difficultyInfo.EN_WORD === 'hard') && (
       <Button
         variant="contained"
-        color={difficultyInfo.EN_WORD === 'normal' ? 'primary' : 'secondary'}
+        color={difficultyInfo.EN_WORD === 'normal' ? 'primary' : 'error'}
         onClick={() => onClickAction(difficultyInfo.EN_WORD)}
       >
         {`${difficultyInfo.JP_WORD}（数値${difficultyInfo.FORMULA_PARTS_COUNT}つ）`}
