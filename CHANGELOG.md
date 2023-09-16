@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## v2.0.0（2023/09/16）
+### Chaged
+- OGP 設定を react-helmet-async に移行(#32)
+
+### Updated
+- Node.js、各種ライブラリのアプデ(#30)
+- CRA 構成から Vite 構成に移行(#32)
+
+主要なアプデ内容（上記2つ合わせたもの）
+- Node.js: 14.17.3 -> 18.17.1
+- TypeScript: 4.3.5 -> 5.2.2
+- React: 17.0.2 -> 18.2.0
+- Material UI：
+  - core：4.12.3 -> 5.14.9
+  - icon：4.12.3 -> 5.14.9
+
+### Development Added
+- GitHook 設定（lint fix + Issue 番号抽出）
+
+### Development Changed
+- yarn から npm へ移行(#30)
+
 ## v1.0.0（2021/08/12）
 ### Fixed
 - アプリ全体の TypeScript 化(#26)
