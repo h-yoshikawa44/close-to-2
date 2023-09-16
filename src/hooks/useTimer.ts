@@ -1,7 +1,7 @@
 import { useState, useRef, useCallback } from 'react';
 
 const useTimer = (
-  limit: number
+  limit: number,
 ): {
   countDownTime: number;
   startTimer: VoidFunction;
