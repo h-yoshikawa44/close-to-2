@@ -2,6 +2,7 @@
   "name": "close-to-2",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "homepage": "https://h-yoshikawa44.github.io/close-to-2/",
   "scripts": {
     "dev": "vite",
@@ -13,7 +14,7 @@
     "fix": "npm run fix:eslint && npm run fix:prettier",
     "fix:eslint": "npm run lint:eslint -- --fix",
     "fix:prettier": "npm run check:prettier -- --write",
-    "deploy": "npm run build && gh-pages -d build",
+    "deploy": "npm run build && gh-pages -d dist",
     "preinstall": "typesync || echo 'skip typesync'"
   },
   "dependencies": {
