@@ -1,6 +1,6 @@
 import { VFC } from 'react';
-import Button from '@material-ui/core/Button';
-import green from '@material-ui/core/colors/green';
+import Button from '@mui/material/Button';
+import green from '@mui/material/colors/green';
 import { Diffculty, DiffcultyInfo } from 'models/Diffculty';
 
 type Props = {

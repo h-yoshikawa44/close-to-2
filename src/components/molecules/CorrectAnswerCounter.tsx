@@ -1,6 +1,6 @@
 import { VFC } from 'react';
-import Box from '@material-ui/core/Box';
-import { PanoramaFishEye as PanoramaFishEyeIcon } from '@material-ui/icons';
+import Box from '@mui/material/Box';
+import { PanoramaFishEye as PanoramaFishEyeIcon } from '@mui/icons-material';
 
 type Props = {
   correctAnswerCount: number;

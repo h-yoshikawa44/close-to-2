@@ -1,5 +1,5 @@
 import { VFC } from 'react';
-import Box from '@material-ui/core/Box';
+import Box from '@mui/material/Box';
 import AnswerBlock from 'components/molecules/AnswerBlock';
 import { Formula } from 'models/Formula';
 

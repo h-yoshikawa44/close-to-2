@@ -1,6 +1,6 @@
 import { VFC } from 'react';
-import Box from '@material-ui/core/Box';
-import { Timer as TimerIcon } from '@material-ui/icons';
+import Box from '@mui/material/Box';
+import { Timer as TimerIcon } from '@mui/icons-material';
 
 type Props = {
   countDowntime: number;

@@ -1,5 +1,5 @@
 import { VFC } from 'react';
-import Button from '@material-ui/core/Button';
+import Button from '@mui/material/Button';
 import { BUTTON_WIDTH, BUTTON_COLORS } from 'constants/game';
 
 type Props = {
