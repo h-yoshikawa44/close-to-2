@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import Box from '@mui/material/Box';
 import AnswerButton from 'components/atoms/AnswerButton';
 import AnswerGuide from 'components/atoms/AnswerGuide';
@@ -13,7 +13,7 @@ type Props = {
   handleAnswer: (isCorrect: boolean) => void;
 };
 
-const AnswerBlock: VFC<Props> = ({
+const AnswerBlock: FC<Props> = ({
   index,
   calcResult,
   formula,

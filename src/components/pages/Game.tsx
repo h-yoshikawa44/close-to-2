@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import GameGuide from 'components/organisms/GameGuide';
@@ -22,7 +22,7 @@ type Props = {
   handleRestart: VoidFunction;
 };
 
-const Game: VFC<Props> = ({
+const Game: FC<Props> = ({
   countDownTime,
   diffcultyInfo,
   formulaData,

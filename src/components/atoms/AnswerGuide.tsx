@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import Typography from '@mui/material/Typography';
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
   isCorrect: boolean;
 };
 
-const AnswerGuide: VFC<Props> = ({ calcResult, abs, isCorrect }) => (
+const AnswerGuide: FC<Props> = ({ calcResult, abs, isCorrect }) => (
   <Typography align="center">
     {`${calcResult} → 2まで${abs} ${isCorrect ? '〇' : '×'}`}
   </Typography>

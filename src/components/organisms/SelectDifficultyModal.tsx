@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import Box from '@mui/material/Box';
 import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
@@ -11,10 +11,7 @@ type Props = {
   handleSelectDifficulty: (selectDiffculty: Diffculty) => void;
 };
 
-const SelectDifficultyModal: VFC<Props> = ({
-  open,
-  handleSelectDifficulty,
-}) => (
+const SelectDifficultyModal: FC<Props> = ({ open, handleSelectDifficulty }) => (
   <Modal
     aria-labelledby="transition-modal-title"
     aria-describedby="transition-modal-description"

@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import Box from '@mui/material/Box';
 import { PanoramaFishEye as PanoramaFishEyeIcon } from '@mui/icons-material';
 
@@ -6,7 +6,7 @@ type Props = {
   correctAnswerCount: number;
 };
 
-const CorrectAnswerCounter: VFC<Props> = ({ correctAnswerCount }) => (
+const CorrectAnswerCounter: FC<Props> = ({ correctAnswerCount }) => (
   <Box m={2} fontSize="1.8rem">
     <PanoramaFishEyeIcon />
     <>{`：${correctAnswerCount}`}</>

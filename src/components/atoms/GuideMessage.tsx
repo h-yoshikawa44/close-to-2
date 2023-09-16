@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import Typography from '@mui/material/Typography';
 
 type Props = {
@@ -6,7 +6,7 @@ type Props = {
   isLastAnswerCorrect: boolean;
 };
 
-const GuideMessage: VFC<Props> = ({ isAnswerDisplay, isLastAnswerCorrect }) => (
+const GuideMessage: FC<Props> = ({ isAnswerDisplay, isLastAnswerCorrect }) => (
   <Typography>
     {isAnswerDisplay && isLastAnswerCorrect && '正解！'}
     {isAnswerDisplay && !isLastAnswerCorrect && '不正解...'}
