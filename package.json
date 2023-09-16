@@ -3,6 +3,32 @@
   "version": "1.0.0",
   "private": true,
   "homepage": "https://h-yoshikawa44.github.io/close-to-2/",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint-check": "npm run lint:eslint && npm run check:prettier",
+    "lint:eslint": "eslint './src/**/*.{js,jsx,ts,tsx}'",
+    "check:prettier": "prettier --check './{public,src}/**/*.{js,jsx,ts,tsx,html,gql,graphql,json}'",
+    "fix": "npm run fix:eslint && npm run fix:prettier",
+    "fix:eslint": "npm run lint:eslint -- --fix",
+    "fix:prettier": "npm run check:prettier -- --write",
+    "deploy": "npm run build && gh-pages -d build",
+    "preinstall": "typesync || echo 'skip typesync'"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
@@ -20,32 +46,6 @@
     "react-share": "^4.4.0",
     "typescript": "^4.3.5",
     "web-vitals": "^2.1.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint-check": "yarn lint:eslint && yarn check:prettier",
-    "lint:eslint": "yarn run -s eslint './src/**/*.{js,jsx,ts,tsx}'",
-    "check:prettier": "yarn run -s prettier --check './{public,src}/**/*.{js,jsx,ts,tsx,html,gql,graphql,json}'",
-    "fix": "yarn fix:eslint && yarn fix:prettier",
-    "fix:eslint": "yarn lint:eslint --fix",
-    "fix:prettier": "yarn check:prettier --write",
-    "deploy": "yarn build && gh-pages -d build",
-    "preinstall": "typesync || echo 'skip typesync'"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   },
   "devDependencies": {
     "@types/gh-pages": "^3.2.0",

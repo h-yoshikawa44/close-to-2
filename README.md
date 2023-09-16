@@ -12,12 +12,12 @@ Other major libraries
 ### 開発環境構築
 - ライブラリのインストール
 ```
-$ yarn install
+$ npm install
 ```
 
 - サーバの起動
 ```
-$ yarn start
+$ npm start
 ```
 
 - ブラウザにアクセス
