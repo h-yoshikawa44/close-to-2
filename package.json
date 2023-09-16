@@ -4,8 +4,9 @@
   "private": true,
   "homepage": "https://h-yoshikawa44.github.io/close-to-2/",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint-check": "npm run lint:eslint && npm run check:prettier",
@@ -53,11 +54,13 @@
     "@types/react-dom": "^18.2.7",
     "@types/testing-library__jest-dom": "^5.14.1",
     "@types/testing-library__user-event": "^4.2.0",
+    "@vitejs/plugin-react": "^4.0.4",
     "eslint-config-prettier": "^8.3.0",
     "gh-pages": "^6.0.0",
     "prettier": "^2.3.2",
     "typescript": "^4.9.5",
-    "typesync": "^0.11.1"
+    "typesync": "^0.11.1",
+    "vite": "^4.4.9"
   },
   "volta": {
     "node": "18.17.1",
