@@ -26,7 +26,7 @@ jobs:
         run: npm ci
 
       - name: Lint & Format Check
-        run: npm lint-check
+        run: npm run lint-check
 
       - name: Slack Notification by NonSuccess
         uses: 8398a7/action-slack@v3
