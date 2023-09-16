@@ -1,7 +1,7 @@
-import green from '@material-ui/core/colors/green';
-import indigo from '@material-ui/core/colors/indigo';
-import orange from '@material-ui/core/colors/orange';
-import red from '@material-ui/core/colors/red';
+import green from '@mui/material/colors/green';
+import indigo from '@mui/material/colors/indigo';
+import orange from '@mui/material/colors/orange';
+import red from '@mui/material/colors/red';
 import { DiffcultyInfo } from '../models/Diffculty';
 
 export const TIMER_LIMIT = 30;

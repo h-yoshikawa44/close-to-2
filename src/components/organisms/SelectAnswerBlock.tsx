@@ -1,5 +1,5 @@
-import { VFC } from 'react';
-import Box from '@material-ui/core/Box';
+import { FC } from 'react';
+import Box from '@mui/material/Box';
 import AnswerBlock from 'components/molecules/AnswerBlock';
 import { Formula } from 'models/Formula';
 
@@ -9,7 +9,7 @@ type Props = {
   handleAnswer: (isCorrect: boolean) => void;
 };
 
-const SelectAnswerBlock: VFC<Props> = ({
+const SelectAnswerBlock: FC<Props> = ({
   formulaData,
   isAnswerDisplay,
   handleAnswer,

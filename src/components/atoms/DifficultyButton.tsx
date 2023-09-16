@@ -1,6 +1,6 @@
-import { VFC } from 'react';
-import Button from '@material-ui/core/Button';
-import green from '@material-ui/core/colors/green';
+import { FC } from 'react';
+import Button from '@mui/material/Button';
+import green from '@mui/material/colors/green';
 import { Diffculty, DiffcultyInfo } from 'models/Diffculty';
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
   onClickAction: (selectDiffculty: Diffculty) => void;
 };
 
-const DifficultyButton: VFC<Props> = ({ difficultyInfo, onClickAction }) => (
+const DifficultyButton: FC<Props> = ({ difficultyInfo, onClickAction }) => (
   <>
     {difficultyInfo.EN_WORD === 'easy' && (
       <Button
@@ -23,7 +23,7 @@ const DifficultyButton: VFC<Props> = ({ difficultyInfo, onClickAction }) => (
       difficultyInfo.EN_WORD === 'hard') && (
       <Button
         variant="contained"
-        color={difficultyInfo.EN_WORD === 'normal' ? 'primary' : 'secondary'}
+        color={difficultyInfo.EN_WORD === 'normal' ? 'primary' : 'error'}
         onClick={() => onClickAction(difficultyInfo.EN_WORD)}
       >
         {`${difficultyInfo.JP_WORD}（数値${difficultyInfo.FORMULA_PARTS_COUNT}つ）`}

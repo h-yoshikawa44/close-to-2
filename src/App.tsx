@@ -1,6 +1,6 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import Game from 'containers/pages/Game';
 
-const App: VFC = () => <Game />;
+const App: FC = () => <Game />;
 
 export default App;

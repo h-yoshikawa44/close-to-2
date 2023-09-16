@@ -1,7 +1,7 @@
-import { VFC } from 'react';
-import Box from '@material-ui/core/Box';
-import Fade from '@material-ui/core/Fade';
-import Modal from '@material-ui/core/Modal';
+import { FC } from 'react';
+import Box from '@mui/material/Box';
+import Fade from '@mui/material/Fade';
+import Modal from '@mui/material/Modal';
 import DifficultyButton from 'components/atoms/DifficultyButton';
 import { Diffculty } from 'models/Diffculty';
 import { EASY, NORMAL, HARD } from 'constants/game';
@@ -11,10 +11,7 @@ type Props = {
   handleSelectDifficulty: (selectDiffculty: Diffculty) => void;
 };
 
-const SelectDifficultyModal: VFC<Props> = ({
-  open,
-  handleSelectDifficulty,
-}) => (
+const SelectDifficultyModal: FC<Props> = ({ open, handleSelectDifficulty }) => (
   <Modal
     aria-labelledby="transition-modal-title"
     aria-describedby="transition-modal-description"
