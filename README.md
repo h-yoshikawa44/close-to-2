@@ -1,4 +1,4 @@
-## close-to-2
+## Close to 2
 
 ### 環境
 base
@@ -17,10 +17,5 @@ npm install
 
 - サーバの起動
 ```
-npm start
-```
-
-- ブラウザにアクセス
-```
-localhost:3000
+npm run dev
 ```

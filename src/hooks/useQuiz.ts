@@ -24,7 +24,7 @@ const useQuiz = (): {
   const getRandomInt = useCallback(
     (min: number, max: number) =>
       Math.floor(Math.random() * Math.floor(max + 1 - min) + min),
-    []
+    [],
   );
 
   // 式のバーツ1つ分のデータ作成 & 取得
@@ -33,7 +33,7 @@ const useQuiz = (): {
       operator: getRandomInt(1, 100) % 2 === 0 ? '+' : ('-' as Operator),
       num: getRandomInt(-99, 99),
     }),
-    [getRandomInt]
+    [getRandomInt],
   );
 
   // 式データ組み立て & 取得
@@ -64,7 +64,7 @@ const useQuiz = (): {
       } as Formula;
       return formulaDatum;
     },
-    [getRandomInt, createPartsOfFormula]
+    [getRandomInt, createPartsOfFormula],
   );
 
   // 正答が複数存在するかチェック
@@ -154,7 +154,7 @@ const useQuiz = (): {
         setAnswerCount((count) => count + 1);
       }, 1200);
     },
-    [checkAnswer]
+    [checkAnswer],
   );
 
   return {
