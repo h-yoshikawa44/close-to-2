@@ -1,6 +1,6 @@
-import { VFC } from 'react';
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
+import { FC } from 'react';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
 import GameGuide from 'components/organisms/GameGuide';
 import SelectAnswerBlock from 'components/organisms/SelectAnswerBlock';
 import SelectDifficultyModal from 'components/organisms/SelectDifficultyModal';
@@ -22,7 +22,7 @@ type Props = {
   handleRestart: VoidFunction;
 };
 
-const Game: VFC<Props> = ({
+const Game: FC<Props> = ({
   countDownTime,
   diffcultyInfo,
   formulaData,

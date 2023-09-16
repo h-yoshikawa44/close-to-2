@@ -1,5 +1,5 @@
-import { VFC } from 'react';
-import Box from '@material-ui/core/Box';
+import { FC } from 'react';
+import Box from '@mui/material/Box';
 import CountDownTimer from 'components/molecules/CountDownTimer';
 import CorrectAnswerCounter from 'components/molecules/CorrectAnswerCounter';
 import GuideMessage from 'components/atoms/GuideMessage';
@@ -11,7 +11,7 @@ type Props = {
   isLastAnswerCorrect: boolean;
 };
 
-const GameGuide: VFC<Props> = ({
+const GameGuide: FC<Props> = ({
   countDowntime,
   correctAnswerCount,
   isAnswerDisplay,

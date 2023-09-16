@@ -1,12 +1,12 @@
-import { VFC } from 'react';
-import Box from '@material-ui/core/Box';
-import { Timer as TimerIcon } from '@material-ui/icons';
+import { FC } from 'react';
+import Box from '@mui/material/Box';
+import { Timer as TimerIcon } from '@mui/icons-material';
 
 type Props = {
   countDowntime: number;
 };
 
-const countDownTimer: VFC<Props> = ({ countDowntime }) => (
+const countDownTimer: FC<Props> = ({ countDowntime }) => (
   <Box m={2} fontSize="1.8rem">
     <TimerIcon style={{ paddingRight: '5px' }} />
     <>{countDowntime}</>

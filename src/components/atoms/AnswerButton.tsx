@@ -1,5 +1,5 @@
-import { VFC } from 'react';
-import Button from '@material-ui/core/Button';
+import { FC } from 'react';
+import Button from '@mui/material/Button';
 import { BUTTON_WIDTH, BUTTON_COLORS } from 'constants/game';
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
   onClickAction: (isCorrect: boolean) => void;
 };
 
-const AnswerButton: VFC<Props> = ({
+const AnswerButton: FC<Props> = ({
   index,
   formula,
   isCorrect,

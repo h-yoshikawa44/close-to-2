@@ -1,7 +1,7 @@
-import { VFC } from 'react';
-import Box from '@material-ui/core/Box';
-import Fade from '@material-ui/core/Fade';
-import Modal from '@material-ui/core/Modal';
+import { FC } from 'react';
+import Box from '@mui/material/Box';
+import Fade from '@mui/material/Fade';
+import Modal from '@mui/material/Modal';
 import { TwitterShareButton, TwitterIcon } from 'react-share';
 import SecondaryButton from 'components/atoms/SecondaryButton';
 import { DiffcultyJP } from 'models/Diffculty';
@@ -13,7 +13,7 @@ type Props = {
   handleRestart: VoidFunction;
 };
 
-const CompleteModal: VFC<Props> = ({
+const CompleteModal: FC<Props> = ({
   open,
   diffculty,
   correctAnswerCount,

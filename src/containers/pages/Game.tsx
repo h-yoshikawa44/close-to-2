@@ -1,11 +1,11 @@
-import { VFC, useState, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 import Game from 'components/pages/Game';
 import { Diffculty } from 'models/Diffculty';
 import { TIMER_LIMIT } from 'constants/game';
 import useTimer from 'hooks/useTimer';
 import useQuiz from 'hooks/useQuiz';
 
-const EnhancedGame: VFC = () => {
+const EnhancedGame: FC = () => {
   const { countDownTime, startTimer, stopTimer, resetTimer } =
     useTimer(TIMER_LIMIT);
 
