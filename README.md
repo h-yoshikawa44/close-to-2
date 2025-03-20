@@ -3,7 +3,7 @@
 ### 環境
 base
 - Node.js：22.13.1
-- React：18.2.0
+- React：19.0.0
 
 Other major libraries
 - Material UI：
