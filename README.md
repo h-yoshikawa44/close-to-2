@@ -6,8 +6,7 @@ base
 - React：19.0.0
 
 Other major libraries
-- Material UI：
-  - core：5.14.9
+- Material UI
 
 ### 開発環境構築
 - ライブラリのインストール
