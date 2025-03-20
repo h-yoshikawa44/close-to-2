@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## v3.0.0（2025/03/20）
+### Chaged
+- OGP 設定を React 本体の機能を使うように移行(#40)
+
+### Updated
+- Node.js、各種ライブラリのアプデ(#40)
+  - Node.js: 18.17.1 -> 22.13.1
+  - TypeScript: 5.2.2 -> 5.8.2
+  - React: 18.2.0 -> 19.0.0
+  - Material UI：
+    - core：5.14.9 -> 6.4.0
+    - icon：5.14.9 -> 6.4.0
+
+### Development Changed
+- GitHook を Lefthook に移行(#40)
+
 ## v2.0.0（2023/09/16）
 ### Chaged
 - OGP 設定を react-helmet-async に移行(#32)
