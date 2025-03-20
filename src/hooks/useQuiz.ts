@@ -51,7 +51,6 @@ const useQuiz = (): {
           num -= parts.num;
           formula += parts.num < 0 ? ` - (${parts.num})` : ` - ${parts.num}`;
         } else {
-          // eslint-disable-next-line no-console
           console.log('invalid operator error');
         }
       }
@@ -133,7 +132,6 @@ const useQuiz = (): {
         setDiffcultyInfo(HARD);
         break;
       default:
-        // eslint-disable-next-line no-console
         console.log('invalid diffculty error');
     }
   }, []);
