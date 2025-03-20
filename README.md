@@ -2,7 +2,7 @@
 
 ### 環境
 base
-- Node.js：18.17.1
+- Node.js：22.13.1
 - React：18.2.0
 
 Other major libraries
