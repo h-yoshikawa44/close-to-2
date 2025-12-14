@@ -1,11 +1,11 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 
 const useTimer = (
   limit: number,
+  stopTimerCallback?: VoidFunction,
 ): {
   countDownTime: number;
   startTimer: VoidFunction;
-  stopTimer: VoidFunction;
   resetTimer: VoidFunction;
 } => {
   const [countDownTime, setCountDownTime] = useState<number>(limit);
@@ -21,13 +21,20 @@ const useTimer = (
 
   const stopTimer = useCallback(() => {
     if (intervalId.current) clearInterval(intervalId.current);
-  }, []);
+    stopTimerCallback?.();
+  }, [stopTimerCallback]);
 
   const resetTimer = useCallback(() => {
     setCountDownTime(limit);
   }, [limit]);
 
-  return { countDownTime, startTimer, stopTimer, resetTimer };
+  useEffect(() => {
+    if (countDownTime === 0) {
+      stopTimer();
+    }
+  }, [countDownTime, stopTimer]);
+
+  return { countDownTime, startTimer, resetTimer };
 };
 
 export default useTimer;
