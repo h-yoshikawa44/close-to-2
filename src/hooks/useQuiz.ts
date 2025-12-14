@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import { Diffculty, DiffcultyInfo } from 'models/Diffculty';
 import { Operator, Formula } from 'models/Formula';
 import { BUTTON_COUNT, EASY, NORMAL, HARD } from 'constants/game';
@@ -15,7 +15,7 @@ const useQuiz = (): {
 } => {
   const [diffcultyInfo, setDiffcultyInfo] = useState<DiffcultyInfo>(EASY);
   const [formulaData, setFormulaData] = useState<Formula[]>([]);
-  const [answerCount, setAnswerCount] = useState<number>(0);
+  const [_, setAnswerCount] = useState<number>(0);
   const [correctAnswerCount, setCorrectAnswerCount] = useState<number>(0);
   const [isAnswerDisplay, setIsAnswerDisplay] = useState<boolean>(false);
   const [isLastAnswerCorrect, setIsLastAnswerCorrect] =
@@ -27,7 +27,7 @@ const useQuiz = (): {
     [],
   );
 
-  // 式のバーツ1つ分のデータ作成 & 取得
+  // 式のパーツ1つ分のデータ作成 & 取得
   const createPartsOfFormula = useCallback(
     () => ({
       operator: getRandomInt(1, 100) % 2 === 0 ? '+' : ('-' as Operator),
@@ -85,24 +85,22 @@ const useQuiz = (): {
   }, []);
 
   // 式データの初期化
-  const initialFormulaData = useCallback(() => {
-    const addPartsCount = diffcultyInfo.FORMULA_PARTS_COUNT - 1;
-    let formulaList;
+  const initialFormulaData = useCallback(
+    (currentDiffcultyInfo: DiffcultyInfo) => {
+      const addPartsCount = currentDiffcultyInfo.FORMULA_PARTS_COUNT - 1;
+      let formulaList;
 
-    // 正答が複数存在するパターンの場合は、再度初期化しなおし。
-    do {
-      formulaList = [];
-      for (let count = 1; count <= BUTTON_COUNT; count += 1) {
-        formulaList.push(createFormulaDatum(addPartsCount));
-      }
-    } while (isDuplicationAbs(formulaList));
-    setFormulaData(getSettingCorrectFormulaData(formulaList));
-  }, [
-    diffcultyInfo.FORMULA_PARTS_COUNT,
-    createFormulaDatum,
-    isDuplicationAbs,
-    getSettingCorrectFormulaData,
-  ]);
+      // 正答が複数存在するパターンの場合は、再度初期化しなおし。
+      do {
+        formulaList = [];
+        for (let count = 1; count <= BUTTON_COUNT; count += 1) {
+          formulaList.push(createFormulaDatum(addPartsCount));
+        }
+      } while (isDuplicationAbs(formulaList));
+      setFormulaData(getSettingCorrectFormulaData(formulaList));
+    },
+    [createFormulaDatum, isDuplicationAbs, getSettingCorrectFormulaData],
+  );
 
   // 回答チェック
   const checkAnswer = useCallback((isCorrect: boolean) => {
@@ -114,27 +112,28 @@ const useQuiz = (): {
     }
   }, []);
 
-  // 式データセットアップ
-  useEffect(() => {
-    initialFormulaData();
-  }, [diffcultyInfo, answerCount, initialFormulaData]);
-
   // 難易度設定
-  const selectDiffculty = useCallback((diffculty: Diffculty) => {
-    switch (diffculty) {
-      case 'easy':
-        setDiffcultyInfo(EASY);
-        break;
-      case 'normal':
-        setDiffcultyInfo(NORMAL);
-        break;
-      case 'hard':
-        setDiffcultyInfo(HARD);
-        break;
-      default:
-        console.log('invalid diffculty error');
-    }
-  }, []);
+  const selectDiffculty = useCallback(
+    (diffculty: Diffculty) => {
+      switch (diffculty) {
+        case 'easy':
+          setDiffcultyInfo(EASY);
+          initialFormulaData(EASY);
+          break;
+        case 'normal':
+          setDiffcultyInfo(NORMAL);
+          initialFormulaData(NORMAL);
+          break;
+        case 'hard':
+          setDiffcultyInfo(HARD);
+          initialFormulaData(HARD);
+          break;
+        default:
+          console.log('invalid diffculty error');
+      }
+    },
+    [initialFormulaData],
+  );
 
   // 回答数リセット
   const resetAnswerCount = useCallback(() => {
@@ -150,9 +149,11 @@ const useQuiz = (): {
       setTimeout(() => {
         setIsAnswerDisplay(false);
         setAnswerCount((count) => count + 1);
+        // 問題式の更新
+        initialFormulaData(diffcultyInfo);
       }, 1200);
     },
-    [checkAnswer],
+    [diffcultyInfo, checkAnswer, initialFormulaData],
   );
 
   return {
