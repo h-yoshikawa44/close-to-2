@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Button from '@mui/material/Button';
-import { BUTTON_WIDTH, BUTTON_COLORS } from 'constants/game';
+import { BUTTON_WIDTH, BUTTON_COLORS } from '@/constants/game';
 
 type Props = {
   index: number;

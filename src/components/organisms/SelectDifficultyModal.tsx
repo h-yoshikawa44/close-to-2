@@ -2,9 +2,9 @@ import { FC } from 'react';
 import Box from '@mui/material/Box';
 import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
-import DifficultyButton from 'components/atoms/DifficultyButton';
-import { Diffculty } from 'models/Diffculty';
-import { EASY, NORMAL, HARD } from 'constants/game';
+import DifficultyButton from '@/components/atoms/DifficultyButton';
+import { Diffculty } from '@/models/Diffculty';
+import { EASY, NORMAL, HARD } from '@/constants/game';
 
 type Props = {
   open: boolean;

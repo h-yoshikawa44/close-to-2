@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Box from '@mui/material/Box';
-import AnswerBlock from 'components/molecules/AnswerBlock';
-import { Formula } from 'models/Formula';
+import AnswerBlock from '@/components/molecules/AnswerBlock';
+import { Formula } from '@/models/Formula';
 
 type Props = {
   formulaData: Formula[];

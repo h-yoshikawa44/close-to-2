@@ -1,12 +1,12 @@
 import { FC } from 'react';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
-import GameGuide from 'components/organisms/GameGuide';
-import SelectAnswerBlock from 'components/organisms/SelectAnswerBlock';
-import SelectDifficultyModal from 'components/organisms/SelectDifficultyModal';
-import CompleteModal from 'components/organisms/CompleteModal';
-import { Formula } from 'models/Formula';
-import { Diffculty, DiffcultyInfo } from 'models/Diffculty';
+import GameGuide from '@/components/organisms/GameGuide';
+import SelectAnswerBlock from '@/components/organisms/SelectAnswerBlock';
+import SelectDifficultyModal from '@/components/organisms/SelectDifficultyModal';
+import CompleteModal from '@/components/organisms/CompleteModal';
+import { Formula } from '@/models/Formula';
+import { Diffculty, DiffcultyInfo } from '@/models/Diffculty';
 
 type Props = {
   countDownTime: number;

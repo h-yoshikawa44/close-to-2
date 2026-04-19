@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Button from '@mui/material/Button';
 import { green } from '@mui/material/colors';
-import { Diffculty, DiffcultyInfo } from 'models/Diffculty';
+import { Diffculty, DiffcultyInfo } from '@/models/Diffculty';
 
 type Props = {
   difficultyInfo: DiffcultyInfo;

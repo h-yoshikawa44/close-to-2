@@ -1,9 +1,9 @@
 import { FC, useState } from 'react';
-import Game from 'components/pages/Game';
-import { Diffculty } from 'models/Diffculty';
-import { TIMER_LIMIT } from 'constants/game';
-import useTimer from 'hooks/useTimer';
-import useQuiz from 'hooks/useQuiz';
+import Game from '@/components/pages/Game';
+import { Diffculty } from '@/models/Diffculty';
+import { TIMER_LIMIT } from '@/constants/game';
+import useTimer from '@/hooks/useTimer';
+import useQuiz from '@/hooks/useQuiz';
 
 const EnhancedGame: FC = () => {
   const {

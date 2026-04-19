@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import Box from '@mui/material/Box';
-import CountDownTimer from 'components/molecules/CountDownTimer';
-import CorrectAnswerCounter from 'components/molecules/CorrectAnswerCounter';
-import GuideMessage from 'components/atoms/GuideMessage';
+import CountDownTimer from '@/components/molecules/CountDownTimer';
+import CorrectAnswerCounter from '@/components/molecules/CorrectAnswerCounter';
+import GuideMessage from '@/components/atoms/GuideMessage';
 
 type Props = {
   countDowntime: number;

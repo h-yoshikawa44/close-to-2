@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Box from '@mui/material/Box';
-import AnswerButton from 'components/atoms/AnswerButton';
-import AnswerGuide from 'components/atoms/AnswerGuide';
+import AnswerButton from '@/components/atoms/AnswerButton';
+import AnswerGuide from '@/components/atoms/AnswerGuide';
 
 type Props = {
   index: number;
