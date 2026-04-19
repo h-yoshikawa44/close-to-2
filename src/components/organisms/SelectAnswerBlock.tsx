@@ -16,7 +16,7 @@ const SelectAnswerBlock: FC<Props> = ({
 }) => (
   <Box>
     {formulaData.map((data, index) => (
-      <Box p={2} key={data.formula}>
+      <Box key={data.formula} sx={{ p: 2 }}>
         <AnswerBlock
           index={index}
           calcResult={data.calcResult}

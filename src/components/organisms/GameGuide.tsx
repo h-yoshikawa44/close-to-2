@@ -18,7 +18,7 @@ const GameGuide: FC<Props> = ({
   isLastAnswerCorrect,
 }) => (
   <>
-    <Box display="flex">
+    <Box sx={{ display: 'flex' }}>
       <CountDownTimer countDowntime={countDowntime} />
       <CorrectAnswerCounter correctAnswerCount={correctAnswerCount} />
     </Box>

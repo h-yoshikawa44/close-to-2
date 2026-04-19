@@ -38,13 +38,15 @@ const Game: FC<Props> = ({
   <>
     <Container maxWidth="sm">
       <Box
-        p={4}
-        my={1}
-        boxShadow={3}
-        borderRadius={16}
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
+        sx={{
+          p: 4,
+          my: 1,
+          boxShadow: 3,
+          borderRadius: 16,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
       >
         <GameGuide
           countDowntime={countDownTime}

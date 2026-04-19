@@ -7,7 +7,7 @@ type Props = {
 };
 
 const countDownTimer: FC<Props> = ({ countDowntime }) => (
-  <Box m={2} fontSize="1.8rem">
+  <Box sx={{ m: 2, fontSize: '1.8rem' }}>
     <TimerIcon style={{ paddingRight: '5px' }} />
     <>{countDowntime}</>
   </Box>

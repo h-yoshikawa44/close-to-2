@@ -32,17 +32,19 @@ const CompleteModal: FC<Props> = ({
   >
     <Fade in={open}>
       <Box
-        p={4}
-        width={400}
-        bgcolor="background.paper"
-        boxShadow={3}
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
+        sx={{
+          p: 4,
+          width: 400,
+          bgcolor: 'background.paper',
+          boxShadow: 3,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
       >
         <h2 id="transition-modal-title">{`${diffculty} ${correctAnswerCount}回正解！`}</h2>
         <p id="transition-modal-description">お疲れさまでしたー</p>
-        <Box p={2}>
+        <Box sx={{ p: 2 }}>
           <TwitterShareButton
             url="https://h-yoshikawa44.github.io/close-to-2"
             title={`${diffculty} - ${correctAnswerCount}回正解！`}
@@ -51,7 +53,7 @@ const CompleteModal: FC<Props> = ({
             <TwitterIcon size={40} borderRadius={10} />
           </TwitterShareButton>
         </Box>
-        <Box p={2}>
+        <Box sx={{ p: 2 }}>
           <SecondaryButton text="再チャレンジ" onClickAction={handleRestart} />
         </Box>
       </Box>

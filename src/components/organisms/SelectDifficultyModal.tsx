@@ -25,32 +25,34 @@ const SelectDifficultyModal: FC<Props> = ({ open, handleSelectDifficulty }) => (
   >
     <Fade in={open}>
       <Box
-        p={4}
-        width={400}
-        bgcolor="background.paper"
-        boxShadow={3}
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
+        sx={{
+          p: 4,
+          width: 400,
+          bgcolor: 'background.paper',
+          boxShadow: 3,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
       >
         <h2 id="transition-modal-title">難易度選択</h2>
         <p id="transition-modal-description">
           難易度に応じて、式が長くなります
         </p>
         <>
-          <Box p={2}>
+          <Box sx={{ p: 2 }}>
             <DifficultyButton
               difficultyInfo={EASY}
               onClickAction={handleSelectDifficulty}
             />
           </Box>
-          <Box p={2}>
+          <Box sx={{ p: 2 }}>
             <DifficultyButton
               difficultyInfo={NORMAL}
               onClickAction={handleSelectDifficulty}
             />
           </Box>
-          <Box p={2}>
+          <Box sx={{ p: 2 }}>
             <DifficultyButton
               difficultyInfo={HARD}
               onClickAction={handleSelectDifficulty}

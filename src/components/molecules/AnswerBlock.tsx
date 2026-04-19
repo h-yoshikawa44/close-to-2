@@ -29,7 +29,7 @@ const AnswerBlock: FC<Props> = ({
       isCorrect={isCorrect}
       onClickAction={handleAnswer}
     />
-    <Box height={20}>
+    <Box sx={{ height: 20 }}>
       {isAnswerDisplay && (
         <AnswerGuide calcResult={calcResult} abs={abs} isCorrect={isCorrect} />
       )}
