@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Box from '@mui/material/Box';
-import AnswerBlock from 'components/molecules/AnswerBlock';
-import { Formula } from 'models/Formula';
+import AnswerBlock from '@/components/molecules/AnswerBlock';
+import { Formula } from '@/models/Formula';
 
 type Props = {
   formulaData: Formula[];
@@ -16,7 +16,7 @@ const SelectAnswerBlock: FC<Props> = ({
 }) => (
   <Box>
     {formulaData.map((data, index) => (
-      <Box p={2} key={data.formula}>
+      <Box key={data.formula} sx={{ p: 2 }}>
         <AnswerBlock
           index={index}
           calcResult={data.calcResult}

@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
-import { Diffculty, DiffcultyInfo } from 'models/Diffculty';
-import { Operator, Formula } from 'models/Formula';
-import { BUTTON_COUNT, EASY, NORMAL, HARD } from 'constants/game';
+import { Diffculty, DiffcultyInfo } from '@/models/Diffculty';
+import { Operator, Formula } from '@/models/Formula';
+import { BUTTON_COUNT, EASY, NORMAL, HARD } from '@/constants/game';
 
 const useQuiz = (): {
   diffcultyInfo: DiffcultyInfo;

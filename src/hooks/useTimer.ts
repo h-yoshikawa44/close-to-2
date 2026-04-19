@@ -9,7 +9,7 @@ const useTimer = (
   resetTimer: VoidFunction;
 } => {
   const [countDownTime, setCountDownTime] = useState<number>(limit);
-  const intervalId = useRef<NodeJS.Timeout>(null);
+  const intervalId = useRef<ReturnType<typeof setInterval>>(null);
 
   const countDown = useCallback(() => {
     setCountDownTime((time) => time - 1);

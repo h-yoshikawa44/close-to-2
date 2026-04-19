@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import Box from '@mui/material/Box';
-import CountDownTimer from 'components/molecules/CountDownTimer';
-import CorrectAnswerCounter from 'components/molecules/CorrectAnswerCounter';
-import GuideMessage from 'components/atoms/GuideMessage';
+import CountDownTimer from '@/components/molecules/CountDownTimer';
+import CorrectAnswerCounter from '@/components/molecules/CorrectAnswerCounter';
+import GuideMessage from '@/components/atoms/GuideMessage';
 
 type Props = {
   countDowntime: number;
@@ -18,7 +18,7 @@ const GameGuide: FC<Props> = ({
   isLastAnswerCorrect,
 }) => (
   <>
-    <Box display="flex">
+    <Box sx={{ display: 'flex' }}>
       <CountDownTimer countDowntime={countDowntime} />
       <CorrectAnswerCounter correctAnswerCount={correctAnswerCount} />
     </Box>

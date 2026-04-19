@@ -7,7 +7,7 @@ type Props = {
 };
 
 const CorrectAnswerCounter: FC<Props> = ({ correctAnswerCount }) => (
-  <Box m={2} fontSize="1.8rem">
+  <Box sx={{ m: 2, fontSize: '1.8rem' }}>
     <PanoramaFishEyeIcon />
     <>{`：${correctAnswerCount}`}</>
   </Box>
