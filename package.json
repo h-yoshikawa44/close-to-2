@@ -25,7 +25,7 @@
     "@mui/material": "^9.5.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
-    "react-share": "^5.3.0"
+    "react-share": "^6.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
