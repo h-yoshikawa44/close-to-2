@@ -47,10 +47,10 @@ const CompleteModal: FC<Props> = ({
         <Box sx={{ p: 2 }}>
           <XShareButton
             url="https://h-yoshikawa44.github.io/close-to-2"
-            title={`${diffculty} - ${correctAnswerCount}回正解！`}
+            text={`${diffculty} - ${correctAnswerCount}回正解！`}
             hashtags={['close_to_2', 'web1week']}
           >
-            <XIcon size={40} borderRadius={10} />
+            <XIcon size={40} />
           </XShareButton>
         </Box>
         <Box sx={{ p: 2 }}>
